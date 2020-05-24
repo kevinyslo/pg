@@ -1,0 +1,13 @@
+Setup 
+------
+Maven 
+1. Prepare settings.xml in C:\Users\ad_kevin_ys_lo\project\bin\apache-maven-3.6.3\conf
+2. Add M2_HOME C:\Users\ad_kevin_ys_lo\project\bin\apache-maven-3.6.3 in environment variable 
+
+React 
+1. Install create-react-app 
+- https://stackoverflow.com/questions/50605219/difference-between-npx-and-npm
+
+Nexus 
+- https://help.sonatype.com/learning/repository-manager-3/first-time-installation-and-setup/lesson-2%3A-proxy-and-hosted-maven-repositories#Lesson2:ProxyandHostedMavenRepositories-WhatisMaven?
+- https://help.sonatype.com/repomanager2/configuration/customizing-server-configuration#CustomizingServerConfiguration-DefaultHTTPandHTTPSProxySettings
