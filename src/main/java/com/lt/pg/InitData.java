@@ -18,14 +18,9 @@ public class InitData {
         authorityRepository.save(Authority.builder().name("MANAGER").build());
         authorityRepository.save(Authority.builder().name("USER").build());
 
-        User user = User.builder().username("admin").password(
-                passwordEncoder.encode("admin")).enabled(true).build();
-        user.getAuthorities().add(authorityRepository.getOne("MANAGER"));
-        user.getAuthorities().add(authorityRepository.getOne("USER"));
-        userRepository.save(user);
-        user = User.builder().username("sophie").password(
-                passwordEncoder.encode("9596")).enabled(true).build();
-        userRepository.save(user);
+       userRepository.save(User.builder().username("admin").password(
+                passwordEncoder.encode("admin")).enabled(true).
+                authorities(authorityRepository.findAllById(Arrays.asList("MANAGER", "USER"))).build());
     }
 
 }
