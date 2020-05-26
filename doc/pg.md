@@ -14,7 +14,11 @@
     - For local test, one instance (dev-a) for site A with local db. Another instance (dev-b) for 
     site B with local db and mq
     - ref:
-        - https://docs.oracle.com/javaee/7/tutorial/jms-concepts.htm#BNCDQ 
+        - https://docs.oracle.com/javaee/7/tutorial/jms-concepts.htm#BNCDQ
+        - https://memorynotfound.com/spring-boot-embedded-activemq-configuration-example/
+        - https://www.devglan.com/spring-boot/spring-boot-jms-activemq-example 
+        - https://activemq.apache.org/vm-transport-reference
+        - https://activemq.apache.org/how-can-i-monitor-activemq
 8. sql(mysql), jms(wildfly)
 
 # Git connect 
