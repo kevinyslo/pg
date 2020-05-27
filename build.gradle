@@ -49,6 +49,7 @@ dependencies {
 	implementation 'org.springframework.data:spring-data-rest-hal-browser'
 	implementation 'org.springframework.session:spring-session-core'
 	implementation 'org.springframework.boot:spring-boot-starter-activemq'
+	implementation 'io.hawt:hawtio-springboot:2.10.0'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'mysql:mysql-connector-java'
@@ -62,6 +63,7 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	compile 'org.jboss.arquillian.container:arquillian-container-spi:1.4.0.Final'
 	compile 'org.wildfly:wildfly-naming-client:1.0.12.Final'
+
 
 }
 
