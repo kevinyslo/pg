@@ -18,7 +18,7 @@ public class PgUserDetailService implements UserDetailsService {
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> userOpt = userRepository.findByUsername(username);
-        if (userOpt.isEmpty()) {
+        if (!userOpt.isPresent()) {
             throw new UsernameNotFoundException(String.format("User %s not found", username));
         }
         return new PgUserDetails(userOpt.get());

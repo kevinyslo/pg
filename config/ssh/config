@@ -1,0 +1,7 @@
+Host github.com
+Hostname www.github.com
+IdentityFile ~/.ssh/id_rsa_github
+IdentitiesOnly yes
+Port 22
+User git
+#ForwardX11 yes

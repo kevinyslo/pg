@@ -13,12 +13,16 @@
     create user in site B. The reason using wildfly for mq is it allow clustering. 
     - For local test, one instance (dev-a) for site A with local db. Another instance (dev-b) for 
     site B with local db and mq
-    - ref:
+    - mq ref:
         - https://docs.oracle.com/javaee/7/tutorial/jms-concepts.htm#BNCDQ
         - https://memorynotfound.com/spring-boot-embedded-activemq-configuration-example/
         - https://www.devglan.com/spring-boot/spring-boot-jms-activemq-example 
         - https://activemq.apache.org/vm-transport-reference
         - https://activemq.apache.org/how-can-i-monitor-activemq
+        - https://stackoverflow.com/questions/31374726/spring-boot-how-to-add-another-war-files-to-the-embedded-tomcat
+     - spring web ref:
+        - https://docs.spring.io/spring/docs/5.2.5.RELEASE/spring-framework-reference/web.html#mvc-ann-methods
+        - https://stackoverflow.com/questions/44108318/spring-boot-start-activemq-web-console-on-startup
 8. sql(mysql), jms(wildfly)
 
 # Git connect 
