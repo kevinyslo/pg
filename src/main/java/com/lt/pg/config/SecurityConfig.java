@@ -20,8 +20,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-                http.csrf().disable().authorizeRequests(authorize -> authorize
-                    .antMatchers("/*").permitAll()
+                http
+                    .csrf().disable() // temp fix for enable hawtio and easy test for api   
+                    .authorizeRequests(authorize -> authorize
+                    .antMatchers("/api/*").authenticated()
                 ).formLogin();
     }
 

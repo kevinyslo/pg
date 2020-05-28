@@ -22,9 +22,12 @@
         - https://stackoverflow.com/questions/31374726/spring-boot-how-to-add-another-war-files-to-the-embedded-tomcat
         - https://jamesnetherton.github.io/2018/11/14/hawtio-spring-boot-support/
         - https://docs.spring.io/spring/docs/3.0.x/spring-framework-reference/html/jms.html
-     - spring web ref:
+    - spring web ref:
         - https://docs.spring.io/spring/docs/5.2.5.RELEASE/spring-framework-reference/web.html#mvc-ann-methods
         - https://stackoverflow.com/questions/44108318/spring-boot-start-activemq-web-console-on-startup
+    - spring security 
+        - https://stackoverflow.com/questions/33125598/how-to-handle-csrf-protection-with-spring-restful-web-services
+         
 8. sql(mysql), jms(wildfly)
 
 # Git connect 
