@@ -8,9 +8,9 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/user")
+@RequestMapping("api/app/user")
 @AllArgsConstructor
-public class UserResource {
+public class AppUserResource {
     
     private final JmsTemplate jmsTemplate;
     

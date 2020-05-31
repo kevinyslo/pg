@@ -1,6 +1,6 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.6.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'org.springframework.boot' version '2.1.4.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.6.RELEASE'
 	id 'java'
 	id 'war'
 }
@@ -13,6 +13,7 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
+	compile.exclude module: "spring-boot-starter-tomcat"
 }
 
 repositories {
@@ -49,21 +50,26 @@ dependencies {
 	implementation 'org.springframework.data:spring-data-rest-hal-browser'
 	implementation 'org.springframework.session:spring-session-core'
 	implementation 'org.springframework.boot:spring-boot-starter-activemq'
-	implementation 'io.hawt:hawtio-springboot:2.10.0'
+	implementation 'io.hawt:hawtio-springboot:2.6.0'
+	if (project.hasProperty('dev')) {
+		// need runtime Servlet classes for bootrun
+		implementation 'org.springframework.boot:spring-boot-starter-undertow'
+	}
+	if (project.hasProperty('uat')) {
+		// no need runtime for war
+		compileOnly 'org.springframework.boot:spring-boot-starter-undertow'
+	}
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.projectlombok:lombok'
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 	testImplementation 'com.unboundid:unboundid-ldapsdk'
 	testImplementation 'org.springframework.integration:spring-integration-test'
 	testImplementation 'org.springframework.security:spring-security-test'
-	compile 'org.jboss.arquillian.container:arquillian-container-spi:1.4.0.Final'
-	compile 'org.wildfly:wildfly-naming-client:1.0.12.Final'
-
 
 }
 
@@ -75,4 +81,12 @@ dependencyManagement {
 
 test {
 	useJUnitPlatform()
+}
+
+war {
+	enabled=true
+
+}
+
+bootRun {
 }
