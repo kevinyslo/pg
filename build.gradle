@@ -29,6 +29,11 @@ ext {
 	set('springBootAdminVersion', "2.2.1")
 }
 
+processResources {
+	filter 'spring.profiles.active': [
+			activeProfile: activeProfile], org.apache.tools.ant.filters.ReplaceTokens
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-cache'
@@ -51,11 +56,11 @@ dependencies {
 	implementation 'org.springframework.session:spring-session-core'
 	implementation 'org.springframework.boot:spring-boot-starter-activemq'
 	implementation 'io.hawt:hawtio-springboot:2.6.0'
-	if (project.hasProperty('dev')) {
+	if (project.getProperty('activeProfile').equals('dev')) {
 		// need runtime Servlet classes for bootrun
 		implementation 'org.springframework.boot:spring-boot-starter-undertow'
 	}
-	if (project.hasProperty('uat')) {
+	if (project.getProperty('activeProfile').equals('uat')) {
 		// no need runtime for war
 		compileOnly 'org.springframework.boot:spring-boot-starter-undertow'
 	}

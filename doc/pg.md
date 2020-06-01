@@ -27,7 +27,10 @@
         - https://stackoverflow.com/questions/44108318/spring-boot-start-activemq-web-console-on-startup
     - spring security 
         - https://stackoverflow.com/questions/33125598/how-to-handle-csrf-protection-with-spring-restful-web-services
-         
+    - spring boot 
+        - https://docs.spring.io/spring-boot/docs/2.1.x/reference/html/index.html    
+        - https://stackoverflow.com/questions/24783070/gradle-build-spring-boot-app-as-war-with-active-profile
+        
 8. sql(mysql), jms(wildfly)
 
 # Git connect 
