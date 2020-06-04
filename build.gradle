@@ -9,11 +9,13 @@ group = 'com.lt'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
 	compile.exclude module: "spring-boot-starter-tomcat"
+
 }
 
 repositories {
@@ -29,9 +31,14 @@ ext {
 	set('springBootAdminVersion', "2.2.1")
 }
 
+
 processResources {
-	filter 'spring.profiles.active': [
-			activeProfile: activeProfile], org.apache.tools.ant.filters.ReplaceTokens
+	from ('/src/main/resources') {
+		include 'application.properties'
+		filter(org.apache.tools.ant.filters.ReplaceTokens, tokens: [
+				activeProfile: project.activeProfile])
+	}
+
 }
 
 dependencies {
@@ -90,7 +97,6 @@ test {
 
 war {
 	enabled=true
-
 }
 
 bootRun {
