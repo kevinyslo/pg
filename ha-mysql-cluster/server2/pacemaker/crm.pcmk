@@ -1,0 +1,16 @@
+node 1: primary \
+        attributes standby=off
+node 2: secondary \
+        attributes standby=off
+node 2130706433: server1
+primitive virtual_public_ip IPaddr2 \
+        params ip=10.10.10.11 cidr_netmask=32 \
+        op monitor interval=10s \
+        meta migration-threshold=2 failure-timeout=60s
+property cib-bootstrap-options: \
+        have-watchdog=false \
+        dc-version=1.1.18-2b07d5c5a9 \
+        cluster-infrastructure=corosync \
+        cluster-name=debian \
+        stonith-enabled=false \
+        no-quorum-policy=ignore

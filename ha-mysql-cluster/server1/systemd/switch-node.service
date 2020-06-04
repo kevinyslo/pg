@@ -1,0 +1,15 @@
+[Unit]
+Description=Switch Node
+#Ensure run after haproxy service, otherwise, it will make current node standby when startup 
+After=haproxy.service
+
+[Service]
+#Type=forking
+Type=simple
+ExecStart=/usr/bin/switch-node-d.sh
+PIDFile=/tmp/switch-node-d.pid
+
+[Install]
+WantedBy=multi-user.target
+
+

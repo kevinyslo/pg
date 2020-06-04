@@ -1,0 +1,15 @@
+[Unit]
+Description=WildFly application server
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=web
+Group=web
+ExecStart=/opt/wildfly-14.0.1.Final/bin/standalone.sh --server-config=standalone-full-ha.xml
+Restart=always
+RestartSec=20
+
+[Install]
+WantedBy=multi-user.target
