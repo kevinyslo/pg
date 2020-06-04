@@ -30,6 +30,11 @@
     - spring boot 
         - https://docs.spring.io/spring-boot/docs/2.1.x/reference/html/index.html    
         - https://stackoverflow.com/questions/24783070/gradle-build-spring-boot-app-as-war-with-active-profile
+        - https://stackoverflow.com/questions/36923288/how-to-run-bootrun-with-spring-profile-via-gradle-task
+    - gradle groovy
+        - https://groovy-lang.org/closures.html
+        - https://docs.gradle.org/current/dsl/org.gradle.api.tasks.Copy.html 
+        - https://docs.gradle.org/current/userguide/groovy_build_script_primer.html
         
 8. sql(mysql), jms(wildfly)
 
