@@ -25,17 +25,20 @@
     - spring web ref:
         - https://docs.spring.io/spring/docs/5.2.5.RELEASE/spring-framework-reference/web.html#mvc-ann-methods
         - https://stackoverflow.com/questions/44108318/spring-boot-start-activemq-web-console-on-startup
-    - spring security 
+    - spring security ref: 
         - https://stackoverflow.com/questions/33125598/how-to-handle-csrf-protection-with-spring-restful-web-services
-    - spring boot 
+    - spring boot ref:
         - https://docs.spring.io/spring-boot/docs/2.1.x/reference/html/index.html    
         - https://stackoverflow.com/questions/24783070/gradle-build-spring-boot-app-as-war-with-active-profile
         - https://stackoverflow.com/questions/36923288/how-to-run-bootrun-with-spring-profile-via-gradle-task
-    - gradle groovy
+        - https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html
+    - gradle groovy ref:
         - https://groovy-lang.org/closures.html
         - https://docs.gradle.org/current/dsl/org.gradle.api.tasks.Copy.html 
         - https://docs.gradle.org/current/userguide/groovy_build_script_primer.html
-        
+    - For wildfly 14, in windows os, need java 8 to run the pg.war instead of java 11
+    
+    
 8. sql(mysql), jms(wildfly)
 
 # Git connect 

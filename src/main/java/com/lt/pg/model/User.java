@@ -1,5 +1,6 @@
 package com.lt.pg.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,6 +25,7 @@ public class User implements Serializable {
     private String username;
 
     @Column(nullable = false)
+    @JsonDeserialize(using = PasswordEncodedDeserializer.class)
     private String password;
 
     @Column(nullable = false)

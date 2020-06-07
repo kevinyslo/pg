@@ -3,11 +3,13 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.6.RELEASE'
 	id 'java'
 	id 'war'
+	id 'io.github.divinespear.jpa-schema-generate' version '0.3.5.1'
 }
 
 group = 'com.lt'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+// use java 8 to compile since wildfly 14 only support it
+sourceCompatibility = JavaVersion.VERSION_1_8
 
 
 configurations {
@@ -100,4 +102,22 @@ war {
 }
 
 bootRun {
+}
+
+generateSchema {
+	// default options
+	// see SchemaGenerationConfig to all options
+	vendor = 'hibernate+spring'
+	scriptAction = "drop-and-create"
+	format = true
+	properties = [
+		'hibernate.dialect': 'org.hibernate.dialect.MySQL5InnoDBDialect',
+//		"hibernate.implicit_naming_strategy": "org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy",
+		"hibernate.physical_naming_strategy": "org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy",
+		'hibernate.id.new_generator_mappings': 'false',
+	]
+	databaseProductName = 'MySQL'
+	databaseMajorVersion = 5
+	databaseMinorVersion = 7
+	packageToScan = ['com.lt.pg.model',]
 }

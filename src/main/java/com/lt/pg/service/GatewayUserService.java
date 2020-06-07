@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class GatewayUserService {
 
-    @JmsListener(destination = "java:out-queue")
+    @JmsListener(destination = "java:jboss/exported/jms/queue/test")
     public void processMessage(User user) {
         log.debug("===================== {}", user);
     }
