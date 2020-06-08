@@ -36,6 +36,8 @@
         - https://groovy-lang.org/closures.html
         - https://docs.gradle.org/current/dsl/org.gradle.api.tasks.Copy.html 
         - https://docs.gradle.org/current/userguide/groovy_build_script_primer.html
+    - window 10 
+        - https://winaero.com/blog/enable-openssh-server-windows-10/
     - For wildfly 14, in windows os, need java 8 to run the pg.war instead of java 11
     
     
