@@ -1,6 +1,8 @@
 plugins {
-	id 'org.springframework.boot' version '2.1.4.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+	id 'org.springframework.boot' version '2.1.9.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+//	id 'org.springframework.boot' version '2.2.6.RELEASE'
+//	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
 	id 'war'
 	id 'io.github.divinespear.jpa-schema-generate' version '0.3.5.1'
@@ -9,7 +11,8 @@ plugins {
 group = 'com.lt'
 version = '0.0.1-SNAPSHOT'
 // use java 8 to compile since wildfly 14 only support it
-sourceCompatibility = JavaVersion.VERSION_1_8
+//sourceCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = 11
 
 
 configurations {
@@ -40,6 +43,7 @@ processResources {
 		filter(org.apache.tools.ant.filters.ReplaceTokens, tokens: [
 				activeProfile: project.activeProfile])
 	}
+	exclude 'jboss-deployment-structure.xml'
 
 }
 
@@ -48,12 +52,12 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-cache'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-data-ldap'
+//	implementation 'org.springframework.boot:spring-boot-starter-data-ldap'
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	implementation 'org.springframework.boot:spring-boot-starter-integration'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
-	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+//	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+//	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
 	implementation 'org.springframework.boot:spring-boot-starter-quartz'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
@@ -64,7 +68,7 @@ dependencies {
 	implementation 'org.springframework.data:spring-data-rest-hal-browser'
 	implementation 'org.springframework.session:spring-session-core'
 	implementation 'org.springframework.boot:spring-boot-starter-activemq'
-	implementation 'io.hawt:hawtio-springboot:2.6.0'
+//	implementation 'io.hawt:hawtio-springboot:2.6.0'
 	if (project.getProperty('activeProfile').equals('dev')) {
 		// need runtime Servlet classes for bootrun
 		implementation 'org.springframework.boot:spring-boot-starter-undertow'
@@ -99,6 +103,9 @@ test {
 
 war {
 	enabled=true
+	metaInf {
+		from 'src/main/resources/jboss-deployment-structure.xml'
+	}
 }
 
 bootRun {
@@ -112,7 +119,7 @@ generateSchema {
 	format = true
 	properties = [
 		'hibernate.dialect': 'org.hibernate.dialect.MySQL5InnoDBDialect',
-//		"hibernate.implicit_naming_strategy": "org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy",
+		"hibernate.implicit_naming_strategy": "org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy",
 		"hibernate.physical_naming_strategy": "org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy",
 		'hibernate.id.new_generator_mappings': 'false',
 	]

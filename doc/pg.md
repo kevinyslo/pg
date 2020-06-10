@@ -38,8 +38,15 @@
         - https://docs.gradle.org/current/userguide/groovy_build_script_primer.html
     - window 10 
         - https://winaero.com/blog/enable-openssh-server-windows-10/
-    - For wildfly 14, in windows os, need java 8 to run the pg.war instead of java 11
-    
+        
+    - For spring boot 2.2.x (compile by java 8/11), wildfly 14 (run in java 11). It occurs 
+        Type 'com/fasterxml/jackson/core/JsonFactory' (current frame, stack[0]) is not assignable 
+        to 'com/fasterxml/jackson/core/TokenStreamFactory' (from method signature)                                                                                
+    - For spring boot 2.1.x (compile by java 11), wildfly 14 (run in java 11). OK 
+    - On 10/6/20, in jboss, it config kev-db which pointed to 192.168.15.6 which is off, that causes
+        no connection. The solution is make it pointed to 15.4 
+    - todo : deploy 2.2.x to latest wildfly 
+        
     
 8. sql(mysql), jms(wildfly)
 

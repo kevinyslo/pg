@@ -1,0 +1,8 @@
+<!-- Fix the problem of unable to instantiate proxy using Objenesis -->
+<jboss-deployment-structure>
+    <deployment>
+        <dependencies>
+            <module name="jdk.unsupported"/>
+        </dependencies>
+    </deployment>
+</jboss-deployment-structure>
