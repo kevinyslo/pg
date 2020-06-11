@@ -36,9 +36,10 @@
         - https://groovy-lang.org/closures.html
         - https://docs.gradle.org/current/dsl/org.gradle.api.tasks.Copy.html 
         - https://docs.gradle.org/current/userguide/groovy_build_script_primer.html
-    - window 10 
+    - window 10 ref
         - https://winaero.com/blog/enable-openssh-server-windows-10/
-        
+    - ssh tunnelling ref
+        - https://serverfault.com/questions/136788/connect-to-remote-mysql-using-proxy
     - For spring boot 2.2.x (compile by java 8/11), wildfly 14 (run in java 11). It occurs 
         Type 'com/fasterxml/jackson/core/JsonFactory' (current frame, stack[0]) is not assignable 
         to 'com/fasterxml/jackson/core/TokenStreamFactory' (from method signature)                                                                                

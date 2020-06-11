@@ -11,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Arrays;
 
-@Profile("dev")
+//@Profile("dev")
 @Configuration
 public class InitData {
 

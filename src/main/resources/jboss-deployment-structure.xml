@@ -1,4 +1,4 @@
-<!-- Fix the problem of unable to instantiate proxy using Objenesis -->
+<!-- Fix the problem of unable to instantiate proxy using Objenesis when wildfly running in jdk 11 -->
 <jboss-deployment-structure>
     <deployment>
         <dependencies>

@@ -16,6 +16,6 @@ public class GatewayUserService {
 
     @JmsListener(destination = "java:jboss/exported/jms/queue/test")
     public void processMessage(User user) {
-        log.debug("===================== {}", user);
+        log.info("===================== {}", user);
     }
 }
