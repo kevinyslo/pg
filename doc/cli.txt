@@ -4,3 +4,8 @@ Windows
 --------
 - netstat -ano | findStr "8081"
 - tasklist /fi "pid eq 2216"
+
+Ubuntu
+------
+- Check network connect: nc -zv localhost 8080
+    - https://blog.gtwang.org/linux/linux-utility-netcat-examples/

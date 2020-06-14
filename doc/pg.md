@@ -45,7 +45,13 @@
         to 'com/fasterxml/jackson/core/TokenStreamFactory' (from method signature)                                                                                
     - For spring boot 2.1.x (compile by java 11), wildfly 14 (run in java 11). OK 
     - On 10/6/20, in jboss, it config kev-db which pointed to 192.168.15.6 which is off, that causes
-        no connection. The solution is make it pointed to 15.4 
+        no connection. The solution is make it pointed to 15.4
+    - Connect embedded jms externally 
+        - https://activemq.apache.org/how-do-i-embed-a-broker-inside-a-connection 
+        - https://stackoverflow.com/questions/42681595/how-to-set-activemq-port-in-spring-boot
+        - https://livebook.manning.com/book/activemq-in-action/chapter-7/
+        - BrokerService can config lately for the embedded activemq broker, e.g. change broker name, connector, ...
+        
     - todo : deploy 2.2.x to latest wildfly 
         
     

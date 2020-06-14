@@ -68,12 +68,12 @@ dependencies {
 	implementation 'org.springframework.data:spring-data-rest-hal-browser'
 	implementation 'org.springframework.session:spring-session-core'
 	implementation 'org.springframework.boot:spring-boot-starter-activemq'
-//	implementation 'io.hawt:hawtio-springboot:2.6.0'
-	if (project.getProperty('activeProfile').equals('dev')) {
+	implementation 'io.hawt:hawtio-springboot:2.6.0'
+	if (project.getProperty('activeProfile').contains('dev')) {
 		// need runtime Servlet classes for bootrun
 		implementation 'org.springframework.boot:spring-boot-starter-undertow'
 	}
-	if (project.getProperty('activeProfile').equals('uat')) {
+	if (project.getProperty('activeProfile').contains('uat')) {
 		// no need runtime for war
 		compileOnly 'org.springframework.boot:spring-boot-starter-undertow'
 	}

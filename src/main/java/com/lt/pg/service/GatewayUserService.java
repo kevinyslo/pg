@@ -3,12 +3,14 @@ package com.lt.pg.service;
 import com.lt.pg.model.User;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+@Profile("dev-gw")
 @Service
 @AllArgsConstructor
 @Slf4j
