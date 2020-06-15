@@ -32,6 +32,7 @@
         - https://stackoverflow.com/questions/24783070/gradle-build-spring-boot-app-as-war-with-active-profile
         - https://stackoverflow.com/questions/36923288/how-to-run-bootrun-with-spring-profile-via-gradle-task
         - https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html
+        - https://stackoverflow.com/questions/30549489/what-is-this-spring-jpa-open-in-view-true-property-in-spring-boot
     - gradle groovy ref:
         - https://groovy-lang.org/closures.html
         - https://docs.gradle.org/current/dsl/org.gradle.api.tasks.Copy.html 
