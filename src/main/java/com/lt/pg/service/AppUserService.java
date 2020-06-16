@@ -27,6 +27,7 @@ public class AppUserService {
     public void createUser(User user) {
         userRepository.save(user);
         jmsTemplate.convertAndSend("java:jboss/exported/jms/queue/test", user);
+        throw new RuntimeException();
     }
 
 }

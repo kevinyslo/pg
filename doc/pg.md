@@ -52,6 +52,9 @@
         - https://stackoverflow.com/questions/42681595/how-to-set-activemq-port-in-spring-boot
         - https://livebook.manning.com/book/activemq-in-action/chapter-7/
         - BrokerService can config lately for the embedded activemq broker, e.g. change broker name, connector, ...
+    - Jms and jdbc in a tranaction (local and JTA)
+        - https://docs.oracle.com/cd/E19798-01/821-1841/bncgh/index.html
+    
     - todo : deploy 2.2.x to latest wildfly 
     
 8. sql(mysql), jms(wildfly) : todo 

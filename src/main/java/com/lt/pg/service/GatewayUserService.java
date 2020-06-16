@@ -22,7 +22,7 @@ public class GatewayUserService {
 
     private final UserRepository userRepository;
 
-    @JmsListener(destination = "java:jboss/exported/jms/queue/test")
+//    @JmsListener(destination = "java:jboss/exported/jms/queue/test")
     //TODO : dequeue cannot rollback
     public void processMessage(User user) {
         userRepository.save(user);
