@@ -54,6 +54,8 @@
         - BrokerService can config lately for the embedded activemq broker, e.g. change broker name, connector, ...
     - Jms and jdbc in a tranaction (local and JTA)
         - https://docs.oracle.com/cd/E19798-01/821-1841/bncgh/index.html
+        - https://stackoverflow.com/questions/44952601/spring-jms-declarative-transaction-management-using-annotations
+        - https://www.jianshu.com/p/fbd5b5f071d4
     
     - todo : deploy 2.2.x to latest wildfly 
     
