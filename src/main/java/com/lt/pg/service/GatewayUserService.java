@@ -5,13 +5,9 @@ import com.lt.pg.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
-import org.springframework.http.HttpStatus;
-import org.springframework.jms.annotation.JmsListener;
-import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 
 @Profile("dev-gw")
 @Service
@@ -22,7 +18,6 @@ public class GatewayUserService {
 
     private final UserRepository userRepository;
 
-//    @JmsListener(destination = "java:jboss/exported/jms/queue/test")
     //TODO : dequeue cannot rollback
     public void processMessage(User user) {
         userRepository.save(user);

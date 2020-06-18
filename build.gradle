@@ -72,6 +72,7 @@ dependencies {
 	if (project.getProperty('activeProfile').contains('dev')) {
 		// need runtime Servlet classes for bootrun
 		implementation 'org.springframework.boot:spring-boot-starter-undertow'
+		implementation 'org.springframework.boot:spring-boot-starter-jta-atomikos'
 	}
 	if (project.getProperty('activeProfile').contains('uat')) {
 		// no need runtime for war
