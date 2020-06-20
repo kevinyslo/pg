@@ -1,0 +1,14 @@
+Amend Q22 
+Approach 1 (Amend P08 and P09 separately) 
+1. As amend P08, load Q08 page 
+- add logic for parent and child not same type code, load child 
+2. As submit request, backend create P09 amend request as well 
+- add logic for having other sibling, copy its common fields and create new amend request (difficult) 
+3. PGA approve amend P08, P09 seperately 
+
+Approach 2 (Amend P22) 
+1. As amend P08, load its parent Q22 page and not allow Q09 fields editable  
+- add logic load sibling application and add logic to check child type code to load amend schema 
+2. Submit P22 amend request
+3. PGA approve amend P22 and system generate P08 and P09 permits again 
+- add logic to cater multi children application in amend request to generate multi permits 
