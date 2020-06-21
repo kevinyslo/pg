@@ -17,4 +17,11 @@ Approach 2 (Amend P22)
 
 CCG + DH 
 ==========
+Approach 
+1. Use parent-child application 
+2. As create application, use parellel gateway to fork task1 (for ccg) and task1-sib (for dh)
+3. The candidate group for task1 is Qxx-CCG-T1, for task1-sib is Qxx-DH-T1
+.....  
+
+
 fork + join ?
