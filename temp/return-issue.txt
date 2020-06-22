@@ -1,0 +1,5 @@
+Concurrent issue for return processing 
+-----------------------------------------
+1. If adding processing variable, it still occur concurrent before commit 
+2. If adding more state, it affect current flow much 
+3. Check trader to use withdraw to end the process 

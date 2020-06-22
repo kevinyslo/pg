@@ -56,7 +56,10 @@
         - https://docs.oracle.com/cd/E19798-01/821-1841/bncgh/index.html
         - https://stackoverflow.com/questions/44952601/spring-jms-declarative-transaction-management-using-annotations
         - https://www.jianshu.com/p/fbd5b5f071d4
-    
+        - https://www.jianshu.com/p/af41f1b696f0
+        - https://stackoverflow.com/questions/54412775/connect-to-embedded-activemq-from-different-spring-boot-project
+        - https://codeaches.com/spring-boot/embedded-activemq-5-jms-broker
+        
     - todo : deploy 2.2.x to latest wildfly 
     
 8. sql(mysql), jms(wildfly) : todo 
