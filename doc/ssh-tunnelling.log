@@ -1,0 +1,26 @@
+$ netstat -ano | findstr 22
+  TCP    10.12.114.212:57637    10.106.103.40:8080     ESTABLISHED     10220
+  TCP    10.12.114.212:60787    10.106.103.40:8080     ESTABLISHED     10220
+  TCP    10.12.114.212:60913    175.41.161.199:22      ESTABLISHED     10036
+  TCP    10.12.114.212:60914    10.106.103.40:8080     ESTABLISHED     10220
+  TCP    10.12.114.212:60932    10.106.103.40:8080     ESTABLISHED     10220
+  TCP    10.12.114.212:60934    10.106.103.40:8080     ESTABLISHED     10220
+  TCP    10.12.114.212:60935    10.106.103.40:8080     ESTABLISHED     10220
+  TCP    10.12.114.212:60936    10.106.103.40:8080     ESTABLISHED     10220
+  TCP    10.12.114.212:60937    10.106.103.40:8080     ESTABLISHED     10220
+  TCP    127.0.0.1:49315        127.0.0.1:49316        ESTABLISHED     10220
+  TCP    127.0.0.1:49316        127.0.0.1:49315        ESTABLISHED     10220
+
+C:\Users\ad_kevin_ys_lo\eclipse-workspace\tsw\tsw-web (BFF -> origin)
+$ netstat -ano | findstr 10036
+  TCP    10.12.114.212:60913    175.41.161.199:22      ESTABLISHED     10036
+  TCP    127.0.0.1:3306         0.0.0.0:0              LISTENING       10036
+  TCP    127.0.0.1:3306         127.0.0.1:60940        ESTABLISHED     10036
+  TCP    [::1]:3306             [::]:0                 LISTENING       10036
+
+C:\Users\ad_kevin_ys_lo\eclipse-workspace\tsw\tsw-web (BFF -> origin)
+$ netstat -ano | findstr 3306
+  TCP    127.0.0.1:3306         0.0.0.0:0              LISTENING       10036
+  TCP    127.0.0.1:3306         127.0.0.1:60940        ESTABLISHED     10036
+  TCP    127.0.0.1:60940        127.0.0.1:3306         ESTABLISHED     11784
+  TCP    [::1]:3306             [::]:0                 LISTENING       10036

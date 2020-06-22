@@ -1,7 +1,23 @@
 Host github.com
-Hostname www.github.com
-IdentityFile ~/.ssh/id_rsa_github
-IdentitiesOnly yes
-Port 22
-User git
-#ForwardX11 yes
+	Hostname www.github.com
+	IdentityFile ~/.ssh/id_rsa_github
+	IdentitiesOnly yes
+	Port 22
+	User git
+	#ForwardX11 yes
+
+Host k-pc
+	Hostname 172.20.10.6
+	IdentityFile ~/.ssh/k-pc.ppk
+	IdentitiesOnly yes
+	Port 80
+
+Host ec2
+	Hostname ec2-175-41-161-199.ap-southeast-1.compute.amazonaws.com
+	IdentityFile ~/.ssh/kev.pem
+	IdentitiesOnly yes
+	Port 22
+	User ec2-user
+
+Host *
+	TcpKeepAlive yes

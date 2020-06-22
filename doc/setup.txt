@@ -11,3 +11,6 @@ React
 Nexus 
 - https://help.sonatype.com/learning/repository-manager-3/first-time-installation-and-setup/lesson-2%3A-proxy-and-hosted-maven-repositories#Lesson2:ProxyandHostedMavenRepositories-WhatisMaven?
 - https://help.sonatype.com/repomanager2/configuration/customizing-server-configuration#CustomizingServerConfiguration-DefaultHTTPandHTTPSProxySettings
+
+AWS
+- customs proxy allow 22 port 

@@ -20,8 +20,6 @@ CCG + DH
 Approach 
 1. Use parent-child application 
 2. As create application, use parellel gateway to fork task1 (for ccg) and task1-sib (for dh)
-3. The candidate group for task1 is Qxx-CCG-T1, for task1-sib is Qxx-DH-T1
-.....  
-
-
-fork + join ?
+3. The candidate group for task1 is Q34-CCG-T1, for task1-sib is Q34-DH-T1
+4. Q34-CCG-T1, Q34-CCG-T2 process Q34 application approval and Q34-DH-T1, Q34-DH-T2 process Q34 application approval parellelly 
+5. As both Q34-CCG-T2 and Q34-DH-T2 approved, the parellel gateway will join task2 (for ccg) and task2-sib (for dh) to issuePermitTask
