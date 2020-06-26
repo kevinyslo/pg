@@ -30,3 +30,8 @@ out/
 
 ### VS Code ###
 .vscode/
+
+/dev-app/tmlog.lck
+/dev-app/tmlog9.log
+/dev-gw/tmlog.lck
+/dev-gw/tmlog46.log

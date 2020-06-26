@@ -67,12 +67,14 @@ dependencies {
 	implementation 'de.codecentric:spring-boot-admin-starter-server'
 	implementation 'org.springframework.data:spring-data-rest-hal-browser'
 	implementation 'org.springframework.session:spring-session-core'
-	implementation 'org.springframework.boot:spring-boot-starter-activemq'
 	implementation 'io.hawt:hawtio-springboot:2.6.0'
 	if (project.getProperty('activeProfile').contains('dev')) {
 		// need runtime Servlet classes for bootrun
 		implementation 'org.springframework.boot:spring-boot-starter-undertow'
 		implementation 'org.springframework.boot:spring-boot-starter-jta-atomikos'
+		implementation 'org.springframework.boot:spring-boot-starter-activemq'
+//		implementation 'org.apache.activemq:activemq-pool'
+
 	}
 	if (project.getProperty('activeProfile').contains('uat')) {
 		// no need runtime for war

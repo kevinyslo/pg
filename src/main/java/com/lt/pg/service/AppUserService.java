@@ -9,16 +9,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
-@Transactional
 public class AppUserService {
 
     private final UserRepository userRepository;
     private final JmsTemplate jmsTemplate;
 
+    @Transactional
     public void createUser(User user) {
         userRepository.save(user);
         jmsTemplate.convertAndSend("java:jboss/exported/jms/queue/test", user);
-        throw new RuntimeException();
     }
 
 }

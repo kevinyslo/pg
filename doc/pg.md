@@ -53,12 +53,18 @@
         - https://livebook.manning.com/book/activemq-in-action/chapter-7/
         - BrokerService can config lately for the embedded activemq broker, e.g. change broker name, connector, ...
     - Jms and jdbc in a tranaction (local and JTA)
+        - The problem is jms cannot rollback, e.g. dequeue cannot rollback
         - https://docs.oracle.com/cd/E19798-01/821-1841/bncgh/index.html
         - https://stackoverflow.com/questions/44952601/spring-jms-declarative-transaction-management-using-annotations
         - https://www.jianshu.com/p/fbd5b5f071d4
         - https://www.jianshu.com/p/af41f1b696f0
         - https://stackoverflow.com/questions/54412775/connect-to-embedded-activemq-from-different-spring-boot-project
         - https://codeaches.com/spring-boot/embedded-activemq-5-jms-broker
+        - https://activemq.apache.org/vm-transport-reference
+        - http://activemq.apache.org/how-do-i-embed-a-broker-inside-a-connection.html
+        - http://websystique.com/spring/spring-4-jms-activemq-example-with-jmslistener-enablejms/
+        - https://techannotation.wordpress.com/2015/07/21/spring-distributed-transaction-with-atomikos-and-activemq/
+        - https://stackoverflow.com/questions/56969964/spring-boot-atomikos-transaction-manager-java-lang-noclassdeffounderror-com-ato
         
     - todo : deploy 2.2.x to latest wildfly 
     
