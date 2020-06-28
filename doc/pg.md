@@ -65,7 +65,12 @@
         - http://websystique.com/spring/spring-4-jms-activemq-example-with-jmslistener-enablejms/
         - https://techannotation.wordpress.com/2015/07/21/spring-distributed-transaction-with-atomikos-and-activemq/
         - https://stackoverflow.com/questions/56969964/spring-boot-atomikos-transaction-manager-java-lang-noclassdeffounderror-com-ato
-        
+        - https://www.logicbig.com/tutorials/spring-framework/spring-integration/jms-template-with-listener.html
+        - https://stackoverflow.com/questions/32185195/jms-message-consumed-despite-transaction-rollback
+        - https://stackoverflow.com/questions/44147964/spring-jms-transaction-rollback-message-dequeued-off-activemq
+        - https://activemq.apache.org/message-redelivery-and-dlq-handling
+        - https://www.cnblogs.com/niit-soft-518/p/6957384.html    
+               
     - todo : deploy 2.2.x to latest wildfly 
     
 8. sql(mysql), jms(wildfly) : todo 
