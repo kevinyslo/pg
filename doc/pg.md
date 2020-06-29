@@ -69,8 +69,11 @@
         - https://stackoverflow.com/questions/32185195/jms-message-consumed-despite-transaction-rollback
         - https://stackoverflow.com/questions/44147964/spring-jms-transaction-rollback-message-dequeued-off-activemq
         - https://activemq.apache.org/message-redelivery-and-dlq-handling
-        - https://www.cnblogs.com/niit-soft-518/p/6957384.html    
-               
+        - https://www.cnblogs.com/niit-soft-518/p/6957384.html
+        - https://stackoverflow.com/questions/16087213/activemq-consumers-with-prefetch-0-increasing-enqueues-count-in-console-bec    
+        - https://activemq.apache.org/what-is-the-prefetch-limit-for
+        
+              
     - todo : deploy 2.2.x to latest wildfly 
     
 8. sql(mysql), jms(wildfly) : todo 

@@ -1,6 +1,7 @@
 package com.lt.pg.config;
 
 import com.atomikos.jms.AtomikosConnectionFactoryBean;
+import org.apache.activemq.ActiveMQPrefetchPolicy;
 import org.apache.activemq.ActiveMQXAConnectionFactory;
 import org.apache.activemq.RedeliveryPolicy;
 import org.apache.activemq.broker.BrokerService;
@@ -25,6 +26,9 @@ public class JmsConfig {
         // ref: http://activemq.apache.org/how-do-i-embed-a-broker-inside-a-connection.html
         ActiveMQXAConnectionFactory cf = new ActiveMQXAConnectionFactory("vm://localhost?create=false");// Set trust package here instead
         cf.setTrustAllPackages(true);
+//        ActiveMQPrefetchPolicy activeMQPrefetchPolicy = new ActiveMQPrefetchPolicy();
+//        activeMQPrefetchPolicy.setAll(2);
+//        cf.setPrefetchPolicy(activeMQPrefetchPolicy);
 //        RedeliveryPolicy queuePolicy = new RedeliveryPolicy();
 //        queuePolicy.setMaximumRedeliveries(-1);    // Don't pass to DLQ
 //        cf.setRedeliveryPolicy(queuePolicy);
@@ -48,13 +52,13 @@ public class JmsConfig {
 
     @Bean
     // If customize DefaultJmsListenerContainerFactory, e.g. concurrency, we should inject transactionManager
-    // bean too
+    // bean for allowing Atomkios transaction management
     public DefaultJmsListenerContainerFactory jmsListenerContainerFactory(
             ConnectionFactory connectionFactory, PlatformTransactionManager transactionManager) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
         factory.setTransactionManager(transactionManager);
-        factory.setConcurrency("1-1");
+//        factory.setConcurrency("1-1");
         return factory;
     }
  }
