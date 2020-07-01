@@ -6,6 +6,7 @@ import org.apache.activemq.ActiveMQXAConnectionFactory;
 import org.apache.activemq.RedeliveryPolicy;
 import org.apache.activemq.broker.BrokerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
 import org.springframework.context.annotation.*;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
@@ -24,7 +25,8 @@ public class JmsConfig {
     public ConnectionFactory connectionFactory() {
         // Create embedded activemq with XA connection factory and don't create broker service first
         // ref: http://activemq.apache.org/how-do-i-embed-a-broker-inside-a-connection.html
-        ActiveMQXAConnectionFactory cf = new ActiveMQXAConnectionFactory("vm://localhost?create=false");// Set trust package here instead
+        ActiveMQXAConnectionFactory cf = new ActiveMQXAConnectionFactory("vm://localhost?create=false");
+        // Set trust package here instead
         cf.setTrustAllPackages(true);
 //        ActiveMQPrefetchPolicy activeMQPrefetchPolicy = new ActiveMQPrefetchPolicy();
 //        activeMQPrefetchPolicy.setAll(2);
@@ -45,20 +47,21 @@ public class JmsConfig {
     public BrokerService broker() throws Exception {
         final BrokerService broker = new BrokerService();
         broker.addConnector("tcp://localhost:61616");
-        broker.addConnector("vm://localhost");
+//        broker.addConnector("vm://localhost");
         broker.setPersistent(false);
         return broker;
     }
 
     @Bean
-    // If customize DefaultJmsListenerContainerFactory, e.g. concurrency, we should inject transactionManager
+    // If customize DefaultJmsListenerContainerFactory, e.g. concurrency, we should inject DefaultJmsListenerContainerFactoryConfigurer
     // bean for allowing Atomkios transaction management
     public DefaultJmsListenerContainerFactory jmsListenerContainerFactory(
-            ConnectionFactory connectionFactory, PlatformTransactionManager transactionManager) {
+            ConnectionFactory connectionFactory, DefaultJmsListenerContainerFactoryConfigurer configurer) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
-        factory.setConnectionFactory(connectionFactory);
-        factory.setTransactionManager(transactionManager);
-//        factory.setConcurrency("1-1");
+        factory.setConcurrency("1-1");
+        configurer.configure(factory, connectionFactory);
         return factory;
     }
+
+    //TODO: found consumer seesionid changing 
  }
