@@ -72,7 +72,11 @@
         - https://www.cnblogs.com/niit-soft-518/p/6957384.html
         - https://stackoverflow.com/questions/16087213/activemq-consumers-with-prefetch-0-increasing-enqueues-count-in-console-bec    
         - https://activemq.apache.org/what-is-the-prefetch-limit-for
-        
+    - Emulator in Window 
+        - cpu usage 
+            - https://superuser.com/questions/176624/linux-top-command-for-windows-powershell
+            - https://github.com/gsass1/NTop/releases
+              
               
     - todo : deploy 2.2.x to latest wildfly 
     

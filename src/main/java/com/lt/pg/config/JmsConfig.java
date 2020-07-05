@@ -5,6 +5,7 @@ import org.apache.activemq.ActiveMQPrefetchPolicy;
 import org.apache.activemq.ActiveMQXAConnectionFactory;
 import org.apache.activemq.RedeliveryPolicy;
 import org.apache.activemq.broker.BrokerService;
+import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
 import org.springframework.context.annotation.*;
@@ -12,13 +13,15 @@ import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.util.backoff.FixedBackOff;
 
 import javax.jms.ConnectionFactory;
+import javax.jms.Queue;
 import javax.jms.Session;
 
 @Profile("dev-gw")
 @Configuration
-@EnableJms
+//@EnableJms
 public class JmsConfig {
 
     @Bean
@@ -29,7 +32,7 @@ public class JmsConfig {
         // Set trust package here instead
         cf.setTrustAllPackages(true);
 //        ActiveMQPrefetchPolicy activeMQPrefetchPolicy = new ActiveMQPrefetchPolicy();
-//        activeMQPrefetchPolicy.setAll(2);
+//        activeMQPrefetchPolicy.setAll(-1);
 //        cf.setPrefetchPolicy(activeMQPrefetchPolicy);
 //        RedeliveryPolicy queuePolicy = new RedeliveryPolicy();
 //        queuePolicy.setMaximumRedeliveries(-1);    // Don't pass to DLQ
@@ -58,10 +61,12 @@ public class JmsConfig {
     public DefaultJmsListenerContainerFactory jmsListenerContainerFactory(
             ConnectionFactory connectionFactory, DefaultJmsListenerContainerFactoryConfigurer configurer) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+//        factory.setMaxMessagesPerTask(1);
         factory.setConcurrency("1-1");
         configurer.configure(factory, connectionFactory);
         return factory;
     }
 
-    //TODO: found consumer seesionid changing 
+
  }
+//TODO: found consumer seesionid changing
