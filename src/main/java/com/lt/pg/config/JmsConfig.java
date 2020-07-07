@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFac
 import org.springframework.context.annotation.*;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
+import org.springframework.jms.config.SimpleJmsListenerContainerFactory;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.backoff.FixedBackOff;
@@ -19,11 +20,13 @@ import javax.jms.ConnectionFactory;
 import javax.jms.Queue;
 import javax.jms.Session;
 
-@Profile("dev-gw")
+import static org.apache.activemq.ActiveMQSession.INDIVIDUAL_ACKNOWLEDGE;
+
 @Configuration
-//@EnableJms
+@EnableJms
 public class JmsConfig {
 
+    @Profile("dev-gw")
     @Bean
     public ConnectionFactory connectionFactory() {
         // Create embedded activemq with XA connection factory and don't create broker service first
@@ -46,6 +49,7 @@ public class JmsConfig {
         return atomikosConnectionFactoryBean;
     }
 
+    @Profile("dev-gw")
     @Bean
     public BrokerService broker() throws Exception {
         final BrokerService broker = new BrokerService();
@@ -55,17 +59,27 @@ public class JmsConfig {
         return broker;
     }
 
+
+    @Profile({"dev-gw", "uat"})
     @Bean
     // If customize DefaultJmsListenerContainerFactory, e.g. concurrency, we should inject DefaultJmsListenerContainerFactoryConfigurer
     // bean for allowing Atomkios transaction management
     public DefaultJmsListenerContainerFactory jmsListenerContainerFactory(
             ConnectionFactory connectionFactory, DefaultJmsListenerContainerFactoryConfigurer configurer) {
+        // DefaultJmsListenerContainerFactory loops create customer session involved unwanted traffic with the broker
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
 //        factory.setMaxMessagesPerTask(1);
-        factory.setConcurrency("1-1");
+        factory.setConcurrency("1-5");
+        factory.setReceiveTimeout(5000L);
+//        factory.setSessionAcknowledgeMode(INDIVIDUAL_ACKNOWLEDGE);
         configurer.configure(factory, connectionFactory);
         return factory;
     }
+
+//
+//    public JmxTransactionService jmxTransactionService() {
+//        JmxTransactionService = new JmxTransactionService();
+//    }
 
 
  }
