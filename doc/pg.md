@@ -72,14 +72,21 @@
         - https://www.cnblogs.com/niit-soft-518/p/6957384.html
         - https://stackoverflow.com/questions/16087213/activemq-consumers-with-prefetch-0-increasing-enqueues-count-in-console-bec    
         - https://activemq.apache.org/what-is-the-prefetch-limit-for
+        - https://docs.spring.io/spring-boot/docs/2.1.9.RELEASE/reference/html/common-application-properties.html
     - Emulator in Window 
         - cpu usage 
             - https://superuser.com/questions/176624/linux-top-command-for-windows-powershell
             - https://github.com/gsass1/NTop/releases
     - Jar sites 
         - https://jar-download.com/artifacts/com.atomikos/transactions/4.0.4/source-code
-              
-    - todo : deploy 2.2.x to latest wildfly 
+    - Trace why spring Jmslistener recreate session repeatedly 
+        - Identify the symptom from broker Jmx that the customer session id is changing repeatedly 
+        - Trace Spring code (DefaultMessageListenerContainer.java) where session is closed 
+        - Add break point at the session close line 
+        - Open debugger to find the thread calling stack 
+        - Find out the caller (ActivemqJmsConsumer.receive()) is waiting for the receiveTimeout 
+        - The solution is set longer receiveTimeout says 9s before default tx timeout 10s           
+    - todo : deploy 2.2.x to latest wildfly (later)
     
 8. sql(mysql), jms(wildfly) : todo 
 

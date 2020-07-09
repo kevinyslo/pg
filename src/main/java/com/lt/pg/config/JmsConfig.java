@@ -59,7 +59,6 @@ public class JmsConfig {
         return broker;
     }
 
-
     @Profile({"dev-gw", "uat"})
     @Bean
     // If customize DefaultJmsListenerContainerFactory, e.g. concurrency, we should inject DefaultJmsListenerContainerFactoryConfigurer
@@ -69,18 +68,13 @@ public class JmsConfig {
         // DefaultJmsListenerContainerFactory loops create customer session involved unwanted traffic with the broker
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
 //        factory.setMaxMessagesPerTask(1);
+        // min 1 up to max 5 connections
         factory.setConcurrency("1-5");
-        factory.setReceiveTimeout(5000L);
+        // Jms consumer will wait 9s for receiving message
+        factory.setReceiveTimeout(9000L);
 //        factory.setSessionAcknowledgeMode(INDIVIDUAL_ACKNOWLEDGE);
         configurer.configure(factory, connectionFactory);
         return factory;
     }
 
-//
-//    public JmxTransactionService jmxTransactionService() {
-//        JmxTransactionService = new JmxTransactionService();
-//    }
-
-
  }
-//TODO: found consumer seesionid changing
