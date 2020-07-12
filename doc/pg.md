@@ -8,7 +8,7 @@
     - Hashing password
 5. Spring configuration, bean
 6. Spring data repository 
-7. Spring rest, jta, sql(local), jms(local) (22/5-?) 
+7. Spring rest, jta, sql(local), jms(local) (22/5-10/7) 
     - Plot: Create user in site A and send message to site B wildfly mq and it read the message to 
     create user in site B. The reason using wildfly for mq is it allow clustering. 
     - For local test, one instance (dev-a) for site A with local db. Another instance (dev-b) for 
@@ -85,7 +85,12 @@
         - Add break point at the session close line 
         - Open debugger to find the thread calling stack 
         - Find out the caller (ActivemqJmsConsumer.receive()) is waiting for the receiveTimeout 
-        - The solution is set longer receiveTimeout says 9s before default tx timeout 10s           
+        - The solution is set longer receiveTimeout says 9s before default tx timeout 10s
+    - Check xa connection pool (Atomikos)
+        - Transaction bean with tx timeout ![](./transaction-bean-config.png)
+        - pool size (....)
+    - Build UI using react to input user and submit post request in site A 
+               
     - todo : deploy 2.2.x to latest wildfly (later)
     
 8. sql(mysql), jms(wildfly) : todo 

@@ -24,8 +24,8 @@ public class GatewayUserService {
     @Transactional
     @JmsListener(containerFactory = "jmsListenerContainerFactory", destination = "java:jboss/exported/jms/queue/test")
     public void processMessage(User user) {
+        // In tx, if rollback, the msg is moved to DLQ (Dead letter queue) by default
         userRepository.save(user);
         log.info("===================== {}", user);
-        throw new RuntimeException();
     }
 }
