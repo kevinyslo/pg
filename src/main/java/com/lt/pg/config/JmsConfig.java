@@ -13,7 +13,9 @@ import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.SimpleJmsListenerContainerFactory;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.util.backoff.FixedBackOff;
 
 import javax.jms.ConnectionFactory;
@@ -70,11 +72,19 @@ public class JmsConfig {
 //        factory.setMaxMessagesPerTask(1);
         // min 1 up to max 5 connections
         factory.setConcurrency("1-5");
-        // Jms consumer will wait 9s for receiving message
-        factory.setReceiveTimeout(9000L);
+        // Jms consumer will wait 20s for receiving message
+        factory.setReceiveTimeout(20000L);
 //        factory.setSessionAcknowledgeMode(INDIVIDUAL_ACKNOWLEDGE);
         configurer.configure(factory, connectionFactory);
         return factory;
     }
+
+    @Bean
+    public DefaultTransactionDefinition transactionDefinition() {
+        DefaultTransactionDefinition transactionDefinition = new DefaultTransactionDefinition();
+        transactionDefinition.setTimeout(30);
+        return transactionDefinition;
+    }
+
 
  }
