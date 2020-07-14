@@ -87,7 +87,8 @@
         - Find out the caller (ActivemqJmsConsumer.receive()) is waiting for the receiveTimeout 
         - The solution is set longer receiveTimeout says 9s before default tx timeout 10s
     - Check xa connection pool (Atomikos)
-        - Transaction bean with tx timeout ![](./transaction-bean-config.png)
+        - In fact, AbstractPollingMessageListenerContainer has instance of DefaultTransactionDefinition which default timeout is -1 (no limit)
+        - spring.jta.atomikos.properties.default-jta-timeout=30000ms (no effect)
         - pool size (....)
     - Build UI using react to input user and submit post request in site A 
                

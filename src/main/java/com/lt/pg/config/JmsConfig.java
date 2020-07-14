@@ -72,19 +72,21 @@ public class JmsConfig {
 //        factory.setMaxMessagesPerTask(1);
         // min 1 up to max 5 connections
         factory.setConcurrency("1-5");
-        // Jms consumer will wait 20s for receiving message
-        factory.setReceiveTimeout(20000L);
+        // Jms consumer will wait 30s for receiving message
+        factory.setReceiveTimeout(30000L);
 //        factory.setSessionAcknowledgeMode(INDIVIDUAL_ACKNOWLEDGE);
         configurer.configure(factory, connectionFactory);
         return factory;
     }
 
-    @Bean
-    public DefaultTransactionDefinition transactionDefinition() {
-        DefaultTransactionDefinition transactionDefinition = new DefaultTransactionDefinition();
-        transactionDefinition.setTimeout(30);
-        return transactionDefinition;
-    }
+    // In fact, AbstractPollingMessageListenerContainer has instance of DefaultTransactionDefinition
+    // which default timeout is -1 (no limit)
+//    @Bean
+//    public DefaultTransactionDefinition transactionDefinition() {
+//        DefaultTransactionDefinition transactionDefinition = new DefaultTransactionDefinition();
+//        transactionDefinition.setTimeout(30);
+//        return transactionDefinition;
+//    }
 
 
  }
