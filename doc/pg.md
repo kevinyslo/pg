@@ -88,7 +88,7 @@
         - The solution is set longer receiveTimeout says 9s before default tx timeout 10s
     - Check xa connection pool (Atomikos)
         - In fact, AbstractPollingMessageListenerContainer has instance of DefaultTransactionDefinition which default timeout is -1 (no limit)
-        - spring.jta.atomikos.properties.default-jta-timeout=30000ms (no effect)
+        - But spring.jta.atomikos.properties.default-jta-timeout can control atomikos jta timeout 
         - pool size (....)
     - Build UI using react to input user and submit post request in site A 
                

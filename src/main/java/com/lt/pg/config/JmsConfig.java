@@ -7,6 +7,7 @@ import org.apache.activemq.RedeliveryPolicy;
 import org.apache.activemq.broker.BrokerService;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
 import org.springframework.context.annotation.*;
 import org.springframework.jms.annotation.EnableJms;
@@ -27,6 +28,9 @@ import static org.apache.activemq.ActiveMQSession.INDIVIDUAL_ACKNOWLEDGE;
 @Configuration
 @EnableJms
 public class JmsConfig {
+
+    @Value()
+    private String JMS_CONNECTION_FACTORY_MAX_POOL_SIZE;
 
     @Profile("dev-gw")
     @Bean
