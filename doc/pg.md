@@ -89,7 +89,8 @@
     - Check xa connection pool (Atomikos)
         - In fact, AbstractPollingMessageListenerContainer has instance of DefaultTransactionDefinition which default timeout is -1 (no limit)
         - But spring.jta.atomikos.properties.default-jta-timeout can control atomikos jta timeout 
-        - pool size (....)
+        - pool size 
+            - max pool size can be set in JMSConfig 
     - Build UI using react to input user and submit post request in site A 
                
     - todo : deploy 2.2.x to latest wildfly (later)

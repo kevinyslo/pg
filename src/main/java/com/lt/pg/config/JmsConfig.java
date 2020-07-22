@@ -29,9 +29,6 @@ import static org.apache.activemq.ActiveMQSession.INDIVIDUAL_ACKNOWLEDGE;
 @EnableJms
 public class JmsConfig {
 
-    @Value()
-    private String JMS_CONNECTION_FACTORY_MAX_POOL_SIZE;
-
     @Profile("dev-gw")
     @Bean
     public ConnectionFactory connectionFactory() {
@@ -50,6 +47,7 @@ public class JmsConfig {
         // Using Atomikos JTA Connection Factory for Atomkios transaction management.
         // We can use DefaultJmsListenerContainerFactory without customization
         AtomikosConnectionFactoryBean atomikosConnectionFactoryBean = new AtomikosConnectionFactoryBean();
+        atomikosConnectionFactoryBean.setMaxPoolSize(10);
         atomikosConnectionFactoryBean.setXaConnectionFactory(cf);
         atomikosConnectionFactoryBean.setUniqueResourceName("xamq");
         return atomikosConnectionFactoryBean;
