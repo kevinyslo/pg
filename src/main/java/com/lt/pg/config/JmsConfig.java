@@ -26,17 +26,21 @@ import javax.jms.Session;
 import static org.apache.activemq.ActiveMQSession.INDIVIDUAL_ACKNOWLEDGE;
 
 @Configuration
-@EnableJms
+//@EnableJms
 public class JmsConfig {
 
-    @Profile("dev-gw")
-    @Bean
-    public ConnectionFactory connectionFactory() {
+    @Autowired
+    @DependsOn
+    private BrokerService brokerService;
+
+//    @Profile("dev-gw")
+//    @Bean
+//    public ConnectionFactory connectionFactory() {
         // Create embedded activemq with XA connection factory and don't create broker service first
         // ref: http://activemq.apache.org/how-do-i-embed-a-broker-inside-a-connection.html
-        ActiveMQXAConnectionFactory cf = new ActiveMQXAConnectionFactory("vm://localhost?create=false");
+//        ActiveMQXAConnectionFactory cf = new ActiveMQXAConnectionFactory("vm://localhost?create=false");
         // Set trust package here instead
-        cf.setTrustAllPackages(true);
+//        cf.setTrustAllPackages(true);
 //        ActiveMQPrefetchPolicy activeMQPrefetchPolicy = new ActiveMQPrefetchPolicy();
 //        activeMQPrefetchPolicy.setAll(-1);
 //        cf.setPrefetchPolicy(activeMQPrefetchPolicy);
@@ -46,40 +50,37 @@ public class JmsConfig {
 //        return cf;
         // Using Atomikos JTA Connection Factory for Atomkios transaction management.
         // We can use DefaultJmsListenerContainerFactory without customization
-        AtomikosConnectionFactoryBean atomikosConnectionFactoryBean = new AtomikosConnectionFactoryBean();
-        atomikosConnectionFactoryBean.setMaxPoolSize(10);
-        atomikosConnectionFactoryBean.setXaConnectionFactory(cf);
-        atomikosConnectionFactoryBean.setUniqueResourceName("xamq");
-        return atomikosConnectionFactoryBean;
-    }
+//        AtomikosConnectionFactoryBean atomikosConnectionFactoryBean = new AtomikosConnectionFactoryBean();
+//        atomikosConnectionFactoryBean.setMaxPoolSize(10);
+//        atomikosConnectionFactoryBean.setXaConnectionFactory(cf);
+//        atomikosConnectionFactoryBean.setUniqueResourceName("xamq");
+//        return atomikosConnectionFactoryBean;
+//    }
 
     @Profile("dev-gw")
-    @Bean
-    public BrokerService broker() throws Exception {
-        final BrokerService broker = new BrokerService();
-        broker.addConnector("tcp://localhost:61616");
-//        broker.addConnector("vm://localhost");
-        broker.setPersistent(false);
-        return broker;
+//    @Bean
+    public void broker() throws Exception {
+        brokerService.addConnector("tcp://localhost:61616");
+//        return brokerService;
     }
 
-    @Profile({"dev-gw", "uat"})
-    @Bean
+//    @Profile({"dev-gw", "uat"})
+//    @Bean
     // If customize DefaultJmsListenerContainerFactory, e.g. concurrency, we should inject DefaultJmsListenerContainerFactoryConfigurer
     // bean for allowing Atomkios transaction management
-    public DefaultJmsListenerContainerFactory jmsListenerContainerFactory(
-            ConnectionFactory connectionFactory, DefaultJmsListenerContainerFactoryConfigurer configurer) {
+//    public DefaultJmsListenerContainerFactory jmsListenerContainerFactory(
+//            ConnectionFactory connectionFactory, DefaultJmsListenerContainerFactoryConfigurer configurer) {
         // DefaultJmsListenerContainerFactory loops create customer session involved unwanted traffic with the broker
-        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+//        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
 //        factory.setMaxMessagesPerTask(1);
         // min 1 up to max 5 connections
-        factory.setConcurrency("1-5");
+//        factory.setConcurrency("1-5");
         // Jms consumer will wait 30s for receiving message
-        factory.setReceiveTimeout(30000L);
+//        factory.setReceiveTimeout(30000L);
 //        factory.setSessionAcknowledgeMode(INDIVIDUAL_ACKNOWLEDGE);
-        configurer.configure(factory, connectionFactory);
-        return factory;
-    }
+//        configurer.configure(factory, connectionFactory);
+//        return factory;
+//    }
 
     // In fact, AbstractPollingMessageListenerContainer has instance of DefaultTransactionDefinition
     // which default timeout is -1 (no limit)
