@@ -8,6 +8,7 @@ import org.apache.activemq.broker.BrokerService;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
 import org.springframework.context.annotation.*;
 import org.springframework.jms.annotation.EnableJms;
@@ -18,7 +19,9 @@ import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.util.backoff.FixedBackOff;
+import org.springframework.boot.autoconfigure.jms.activemq.ActiveMQAutoConfiguration;
 
+import javax.annotation.PostConstruct;
 import javax.jms.ConnectionFactory;
 import javax.jms.Queue;
 import javax.jms.Session;
@@ -26,12 +29,9 @@ import javax.jms.Session;
 import static org.apache.activemq.ActiveMQSession.INDIVIDUAL_ACKNOWLEDGE;
 
 @Configuration
+@AutoConfigureAfter(ActiveMQAutoConfiguration.class)
 //@EnableJms
 public class JmsConfig {
-
-    @Autowired
-    @DependsOn
-    private BrokerService brokerService;
 
 //    @Profile("dev-gw")
 //    @Bean
@@ -58,10 +58,23 @@ public class JmsConfig {
 //    }
 
     @Profile("dev-gw")
-//    @Bean
-    public void broker() throws Exception {
-        brokerService.addConnector("tcp://localhost:61616");
-//        return brokerService;
+    @PostConstruct
+    // After ActiveMQAutoConfiguration, try to findkerService and add its connector
+    // to tcp://localhost:61616. However, the BrokerService is not Spring bean
+    public void addBrokerConnector() throws Exception {
+//        broker.addConnector("tcp://localhost:61616");
+//        broker.setPersistent(false);
+    }
+
+    @Profile("dev-gw")
+    @Bean
+    // Try to create a new BrokerService bean. But it throws InstanceAlreadyExistsException for same
+    // localhost broker name because Spring init activemq will create localhost broker
+    public BrokerService broker() throws Exception {
+        final BrokerService broker = new BrokerService();
+        broker.addConnector("tcp://localhost:61616");
+        broker.setPersistent(false);
+        return broker;
     }
 
 //    @Profile({"dev-gw", "uat"})
