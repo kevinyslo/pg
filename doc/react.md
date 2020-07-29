@@ -15,3 +15,10 @@
     - https://create-react-app.dev/docs/running-tests/
 - command:
     - npm init react-app pg-app
+
+## Development 
+1. Add useful packages
+- npm install --save react-router-dom
+
+2. Found VSCode always go to *.d.ts from "Go to Definition" 
+- https://stackoverflow.com/questions/49197923/vscode-always-shows-type-definition-and-not-the-actually-implementation
