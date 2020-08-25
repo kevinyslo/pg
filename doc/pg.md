@@ -92,11 +92,15 @@
         - pool size 
             - JMS AtomikosConnectionFactoryBean max pool size set in JMSConfig 
             - DB datasource pool size set in properties (spring.jta.atomikos.datasource.max-pool-size)
-    - Build UI using react to input user and submit post request in site A 
-               
+    - Build UI using react to input user and submit post request in site A (Please refer to react.md) 
+    - Spring find request session with undertow by default 
+        - Undertow find JESSIONID from request cookie 
+        - Its session manager match session id of each sessions in the server 
+        - The session will store spring security context, e.g. the context has principal 
+
+8. sql(mysql), jms(wildfly) : todo 
     - todo : deploy 2.2.x to latest wildfly (later)
     
-8. sql(mysql), jms(wildfly) : todo 
 
 # Git connect 
 - https://blog.techbridge.cc/2018/01/17/learning-programming-and-coding-with-python-git-and-github-tutorial/

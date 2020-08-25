@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import logo from './logo.svg';
+import React, {useState, useEffect, useRef, useCallback, useMemo} from "react";
 import './App.css';
+import './Style.css';   // check how to import css to child component
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,6 +8,7 @@ import {
   Link
 } from "react-router-dom";
 import randomColor from "randomcolor";
+import Paint from "./Paint";
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
             <Link to="/playground">Playground</Link>
           </li>
           <li>
-            <Link to="/name">Name</Link>
+            <Link to="/paint">Paint</Link>
           </li>
         </ul>
 
@@ -54,8 +55,8 @@ function App() {
           <Route path="/playground">
             <Playground />
           </Route>
-          <Route path="/name">
-            <Name />
+          <Route path="/paint">
+            <Paint />
           </Route>
         </Switch>
       </div>
@@ -92,39 +93,23 @@ function Dashboard() {
 
 
 function Playground() {
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(30)
 
-    const [color, setColor] = useState(null);
-    useEffect(() => {
-        setColor(randomColor());
-    }, [count]);
+    const inputRef = useRef()
+
+    const [color, setColor] = useState(randomColor())
+    useEffect(() => inputRef.current.focus(), [count])
 
     return (
-        <div style={{ borderTop: `10px solid ${color}` }}>
+        <div style={{ borderTop: `10px solid ${color}`}}>
             {count}
-            <button onClick={() => setCount((currentCount) => currentCount - 1)}>
-                -
-            </button>
-            <button onClick={() => setCount((currentCount) => currentCount + 1)}>
-                +
-            </button>
+            <button onClick={() => setCount(currentCount => currentCount - 1)}>-</button>
+            <button onClick={() => setCount(currentCount => currentCount + 1)}>+</button>
+            <button onClick={() => setColor(randomColor())}>Change Color</button>
+            <hr />
+            <input ref={inputRef} type="range" onChange={e => setCount(e.target.value)} value={count} />
         </div>
-    );
-}
-
-
-function Name() {
-  const [name, setName] = useState("");
-  return (
-      <label className="App-header">
-          <input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              onClick={(e) => e.target.setSelectionRange(0, e.target.value.length)}
-              placeholder="Untitled"
-          />
-      </label>
-  );
+    )
 }
 
 export default App;
