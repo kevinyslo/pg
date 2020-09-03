@@ -1,6 +1,6 @@
 plugins {
-	id 'org.springframework.boot' version '2.1.9.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'org.springframework.boot' version '2.3.3.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 //	id 'org.springframework.boot' version '2.2.6.RELEASE'
 //	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
@@ -11,8 +11,8 @@ plugins {
 group = 'com.lt'
 version = '0.0.1-SNAPSHOT'
 // use java 8 to compile since wildfly 14 only support it
-//sourceCompatibility = JavaVersion.VERSION_1_8
-sourceCompatibility = 11
+sourceCompatibility = JavaVersion.VERSION_1_8
+//sourceCompatibility = 11
 
 
 configurations {
