@@ -40,3 +40,5 @@
 - https://zhuanlan.zhihu.com/p/66020264 
 - https://github.com/reduxjs/redux-thunk
 - https://www.robinwieruch.de/redux-vs-usereducer
+
+3. npm eject 
