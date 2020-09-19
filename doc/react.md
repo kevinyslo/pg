@@ -41,4 +41,8 @@
 - https://github.com/reduxjs/redux-thunk
 - https://www.robinwieruch.de/redux-vs-usereducer
 
-3. npm eject 
+3. Add context/index.html and its index.js
+- npm run eject
+- https://www.npmjs.com/package/html-webpack-plugin 
+- https://medium.com/@rajaraodv/webpack-the-confusing-parts-58712f8fcad9
+- https://www.jianshu.com/p/5e32f0315bb1
