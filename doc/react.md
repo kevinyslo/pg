@@ -40,9 +40,14 @@
 - https://zhuanlan.zhihu.com/p/66020264 
 - https://github.com/reduxjs/redux-thunk
 - https://www.robinwieruch.de/redux-vs-usereducer
+- https://medium.com/simply/state-management-with-react-hooks-and-context-api-at-10-lines-of-code-baf6be8302c
 
 3. Add context/index.html and its index.js
 - npm run eject
 - https://www.npmjs.com/package/html-webpack-plugin 
 - https://medium.com/@rajaraodv/webpack-the-confusing-parts-58712f8fcad9
 - https://www.jianshu.com/p/5e32f0315bb1
+- https://sapandiwakar.in/multiple-html-pages-with-create-react-app-app/
+- https://stackoverflow.com/questions/55308657/create-react-app-v2-multiple-entry-points
+
+4. 
