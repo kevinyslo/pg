@@ -101,11 +101,25 @@ module.exports = function(proxy, allowedHost) {
       // index: paths.publicUrlOrPath,
       rewrites: [
         { from: /^\/context/, to: '/contenxt/index.html' },
+        { from: /^\/context2/, to: '/contenxt2/index.html' },
+        { from: /^\/app/, to: '/app/index.html' },
+
       ]
     },
     public: allowedHost,
     // `proxy` is run between `before` and `after` `webpack-dev-server` hooks
-    proxy,
+    proxy: {
+      "/api": {
+        target: {
+          host: "0.0.0.0",
+          protocol: 'http:',
+          port: 8083
+        },
+        pathRewrite: {
+          // '^/api': ''
+        }
+      }
+    },
     before(app, server) {
       // Keep `evalSourceMapMiddleware` and `errorOverlayMiddleware`
       // middlewares before `redirectServedPath` otherwise will not have any effect

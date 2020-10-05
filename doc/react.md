@@ -50,4 +50,9 @@
 - https://sapandiwakar.in/multiple-html-pages-with-create-react-app-app/
 - https://stackoverflow.com/questions/55308657/create-react-app-v2-multiple-entry-points
 
-4. 
+4.  'http://localhost:8083/api/data/users/1' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+- https://juejin.im/post/6844904005299077128
+- https://stackoverflow.com/questions/31602697/webpack-dev-server-cors-issue
+
+5. useReducer fetch data
+- https://stackoverflow.com/questions/53146795/react-usereducer-async-data-fetch/53146965

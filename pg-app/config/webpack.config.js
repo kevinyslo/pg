@@ -159,6 +159,8 @@ module.exports = function(webpackEnv) {
       require.resolve('react-dev-utils/webpackHotDevClient'), paths.appContextIndexJs].filter(Boolean),
       context2Js: [ isEnvDevelopment &&
       require.resolve('react-dev-utils/webpackHotDevClient'), paths.appContext2IndexJs].filter(Boolean),
+      pgAppJs: [ isEnvDevelopment &&
+      require.resolve('react-dev-utils/webpackHotDevClient'), paths.pgAppIndexJs].filter(Boolean),
       // We include the app code last so that if there is a runtime error during
       // initialization, it doesn't blow up the WebpackDevServer client, and
       // changing JS code would still trigger a refresh.
@@ -576,6 +578,33 @@ module.exports = function(webpackEnv) {
                 chunks: ['context2Js'],
                 template: paths.appContext2Html,
                 filename: 'context2/index.html'
+              },
+              isEnvProduction
+                  ? {
+                    minify: {
+                      removeComments: true,
+                      collapseWhitespace: true,
+                      removeRedundantAttributes: true,
+                      useShortDoctype: true,
+                      removeEmptyAttributes: true,
+                      removeStyleLinkTypeAttributes: true,
+                      keepClosingSlash: true,
+                      minifyJS: true,
+                      minifyCSS: true,
+                      minifyURLs: true,
+                    },
+                  }
+                  : undefined
+          )
+      ),
+      new HtmlWebpackPlugin(
+          Object.assign(
+              {},
+              {
+                inject: true,
+                chunks: ['pgAppJs'],
+                template: paths.pgAppHtml,
+                filename: 'app/index.html'
               },
               isEnvProduction
                   ? {
