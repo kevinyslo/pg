@@ -54,5 +54,9 @@
 - https://juejin.im/post/6844904005299077128
 - https://stackoverflow.com/questions/31602697/webpack-dev-server-cors-issue
 
-5. useReducer fetch data
-- https://stackoverflow.com/questions/53146795/react-usereducer-async-data-fetch/53146965
+5. useReducer
+- fetch data: https://stackoverflow.com/questions/53146795/react-usereducer-async-data-fetch/53146965
+- form binding : https://medium.com/javascript-in-plain-english/react-controlled-forms-with-hooks-538762aab935
+
+6. React router dom
+- https://reactrouter.com/web/example/custom-link

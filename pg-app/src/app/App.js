@@ -2,7 +2,7 @@ import { StateProvider } from './State'
 import { UserPage } from './UserPage'
 import React, {useEffect} from "react"
 import axios from "axios"
-import {Route, Switch, BrowserRouter as Router,} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch,} from "react-router-dom";
 
 export const App = () => {
     const initialUserState = {
@@ -11,12 +11,10 @@ export const App = () => {
 
     }
 
-
-
     const userReducer = (user, action) => {
         switch (action.type) {
             case 'edit':
-                return action.newuser
+                return action.user
             default:
                 // return user
                 axios.get('http://localhost:3000/api/data/users/1').then(
@@ -26,15 +24,14 @@ export const App = () => {
     }
 
     return (
-
         <StateProvider initialState={initialUserState} reducer={userReducer}>
-            {/*<Router>*/}
-            {/*<Switch>*/}
-            {/*    <Route exact path="/">*/}
+            <Router>
+            <Switch>
+                <Route path="/">
                     <UserPage/>
-            {/*    </Route>*/}
-            {/*</Switch>*/}
-            {/*</Router>*/}
+                </Route>
+            </Switch>
+            </Router>
         </StateProvider>
     )
 }
