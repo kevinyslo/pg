@@ -2,9 +2,14 @@ import React, {useEffect} from "react";
 import { useStateValue } from './State';
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { createBrowserHistory } from "history";
+
+const history = createBrowserHistory();
 
 export const UserPage = (props) => {
-    const history = useHistory();
+    // const history = useHistory();
+
+
     const [ user, dispatch] = useStateValue()
     useEffect(() => {
         async function fetchUser() {
@@ -15,13 +20,20 @@ export const UserPage = (props) => {
             })
         }
         fetchUser()
-    }, [])
+    },
+        [history])
+    // [])
     return (
         <div>
             <input value={user.username} onChange={e => user.username = e.target.value}/>
             <input value={user.password} onChange={e => user.password = e.target.value}/>
             <button onClick={
-                () => history.push("/")
+                () => {
+
+                    history.push("/app")
+                    console.log('---------------------', history)
+
+                }
             }
             >
             Click me</button>

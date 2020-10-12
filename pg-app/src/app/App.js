@@ -2,7 +2,7 @@ import { StateProvider } from './State'
 import { UserPage } from './UserPage'
 import React, {useEffect} from "react"
 import axios from "axios"
-import {BrowserRouter as Router, Route, Switch,} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 export const App = () => {
     const initialUserState = {
@@ -26,11 +26,11 @@ export const App = () => {
     return (
         <StateProvider initialState={initialUserState} reducer={userReducer}>
             <Router>
-            <Switch>
-                <Route path="/">
-                    <UserPage/>
-                </Route>
-            </Switch>
+                <Switch>
+                    <Route exact path="/app">
+                        <UserPage/>
+                    </Route>
+                </Switch>
             </Router>
         </StateProvider>
     )
