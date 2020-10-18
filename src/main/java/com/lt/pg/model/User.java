@@ -31,7 +31,7 @@ public class User implements Serializable {
     private String password;
 
     @Column(nullable = false)
-    private Boolean enabled;
+    private Boolean enabled = true;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @Builder.Default

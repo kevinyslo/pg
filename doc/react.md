@@ -57,7 +57,14 @@
 5. useReducer
 - fetch data: https://stackoverflow.com/questions/53146795/react-usereducer-async-data-fetch/53146965
 - form binding : https://medium.com/javascript-in-plain-english/react-controlled-forms-with-hooks-538762aab935
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names
 
 6. React router dom
 - https://reactrouter.com/web/example/custom-link
 - https://www.jianshu.com/p/bdab3f6a226d
+
+7. Submit block screen and show success msg in a box 
+- React web development component : https://github.com/mui-org/material-ui
+
+8. Auth 
+- https://auth0.com/developers/?utm_source=carbon&utm_medium=cpc&utm_campaign=carbon&utm_content=five-fingerprint-orange-devhome

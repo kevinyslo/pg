@@ -1,8 +1,8 @@
 import { StateProvider } from './State'
-import { UserPage } from './UserPage'
-import React, {useEffect} from "react"
-import axios from "axios"
+import { UserPage,  } from './UserPage'
+import React from "react"
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import axios from 'axios'
 
 export const App = () => {
     const initialUserState = {
@@ -13,12 +13,15 @@ export const App = () => {
 
     const userReducer = (user, action) => {
         switch (action.type) {
-            case 'edit':
+            case 'fetch':
                 return action.user
+            case 'set':
+                return {...user, [action.fieldName]: action.fieldValue}
+            case 'create':
+               return {...user, msg: action.msg}
             default:
                 // return user
-                axios.get('http://localhost:3000/api/data/users/1').then(
-                    response => user = response.data)
+                console.log('====================', user)
                 return user
         }
     }

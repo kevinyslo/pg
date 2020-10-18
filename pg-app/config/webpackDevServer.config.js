@@ -113,7 +113,7 @@ module.exports = function(proxy, allowedHost) {
         target: {
           host: "0.0.0.0",
           protocol: 'http:',
-          port: 8083
+          port: 8082
         },
         pathRewrite: {
           // '^/api': ''
