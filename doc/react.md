@@ -63,8 +63,14 @@
 - https://reactrouter.com/web/example/custom-link
 - https://www.jianshu.com/p/bdab3f6a226d
 
-7. Submit block screen and show success msg in a box 
-- React web development component : https://github.com/mui-org/material-ui
+7. Bootstrap 
+- https://v5.getbootstrap.com/docs/5.0/getting-started/webpack/
+- https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-background
+- https://react-bootstrap.github.io/ (todo)
 
-8. Auth 
+8. Submit block screen and show success msg in a box 
+- React web development component : https://github.com/mui-org/material-ui
+- https://github.com/derrickpelletier/react-loading-overlay
+
+9. Auth 
 - https://auth0.com/developers/?utm_source=carbon&utm_medium=cpc&utm_campaign=carbon&utm_content=five-fingerprint-orange-devhome
