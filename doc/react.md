@@ -63,13 +63,16 @@
 - https://reactrouter.com/web/example/custom-link
 - https://www.jianshu.com/p/bdab3f6a226d
 
-7. Bootstrap 
+7. Responsive development framework for reach  
 - https://v5.getbootstrap.com/docs/5.0/getting-started/webpack/
 - https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-background
-- https://react-bootstrap.github.io/ (todo)
+- https://react-bootstrap.github.io/
+- https://github.com/mui-org/material-ui 
+- https://semantic-ui.com/ 
+- https://react.semantic-ui.com/ (todo)
+- https://ant.design/components/transfer/ (todo) 
 
 8. Submit block screen and show success msg in a box 
-- React web development component : https://github.com/mui-org/material-ui
 - https://github.com/derrickpelletier/react-loading-overlay
 
 9. Auth 
