@@ -1,18 +1,18 @@
 import React, {useEffect} from "react";
 import { useStateValue } from './State';
 import axios from "axios";
-import { Link, useHistory } from "react-router-dom"; // use hook to get history from router
+import { Link } from "react-router-dom"; // use hook to get history from router
 
 export const UserList = (props) => {
-    // const history = useHistory();
     const [state, dispatch] = useStateValue()
 
     async function fetchUsers() {
         const result = await axios.get('/api/data/users')
         dispatch({
-            type: 'fetchUsers',
+            type: 'list',
             users: result.data._embedded.users
         })
+        console.log(state)
     }
 
     useEffect(() => {

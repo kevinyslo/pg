@@ -3,21 +3,22 @@ import { UserPage,  } from './UserPage'
 import { UserList,  } from './UserList'
 import React from "react"
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import axios from 'axios'
 
 export const App = () => {
+
     const initialUserState = {
         user: {
-            username: '',
-            password: '',
+            // username: '',
+            // password: '',
         },
-        users: [ ]
+        users: []
     }
 
-    const userReducer = (state, action) => {
+    const mainReducer = (state, action) => {
+        // state.msg = action.msg  // not working
         state = {...state, msg: action.msg}
         switch (action.type) {
-            case 'fetchUsers':
+            case 'list':
                 return {...state, users: action.users}
             case 'fetch':
                 return {...state, user: action.user}
@@ -31,7 +32,7 @@ export const App = () => {
     }
 
     return (
-        <StateProvider initialState={initialUserState} reducer={userReducer}>
+        <StateProvider initialState={initialUserState} reducer={mainReducer}>
             <Router>
                 <Switch>
                     <Route exact path="/app/user/:userId">

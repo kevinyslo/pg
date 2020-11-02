@@ -69,8 +69,13 @@ export const UserPage = (props) => {
             <div/>
             <label style={{color:'red'}}>{state.msg}</label>
             <div/>
-            <input name="username" value={state.user.username} onChange={onChange}/>
-            <input name="password" value={state.user.password} onChange={onChange}/>
+            <label>User name
+                <input name="username" value={state.user.username} onChange={onChange}/>
+            </label>
+            <br/>
+            <label>Password
+                <input name="password" value={state.user.password} onChange={onChange}/>
+            </label>
             <div/>
             <button onClick={
                 () => {
