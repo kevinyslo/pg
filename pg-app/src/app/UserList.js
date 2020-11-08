@@ -10,7 +10,7 @@ export const UserList = (props) => {
         const result = await axios.get('/api/data/users')
         dispatch({
             type: 'list',
-            users: result.data._embedded.users
+            list: result.data._embedded.users
         })
         console.log(state)
     }
@@ -28,7 +28,7 @@ export const UserList = (props) => {
                 </thead>
                 <tbody>
                 {
-                    state.users.map(u =>(
+                    state.list.map(u =>(
                     <tr key={u.id}>
                         <td><Link to={`/app/user/${u.id}`}>{u.username}</Link></td>
                         <td>{u.password}</td>

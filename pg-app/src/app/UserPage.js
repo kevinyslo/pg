@@ -16,25 +16,25 @@ export const UserPage = (props) => {
         setStatus('loaded')
         dispatch({
             type: 'fetch',
-            user: {username: result.data.username, password: result.data.password},
+            obj: {username: result.data.username, password: result.data.password},
         })
     }
 
     async function createUser() {
         try {
             setStatus('loading')
-            await axios.post('/api/app/user', state.user)
+            await axios.post('/api/app/user', state.obj)
             setStatus('loaded')
             dispatch({
                 type: 'create',
-                msg: `Create user ${state.user.username} successfully !`,
+                msg: `Create user ${state.obj.username} successfully !`,
             })
         }
         catch (e) {
             setStatus('error')
             dispatch({
                 type: 'create',
-                msg: `Create user ${state.user.username} fail !`,
+                msg: `Create user ${state.obj.username} fail !`,
             })
         }
     }
@@ -65,16 +65,16 @@ export const UserPage = (props) => {
                 active={status === 'loading' ? true : false}
                 spinner
                 text='Loading your content...'>
-            <Link to={"/app/userList"}>User List</Link>
+            <Link to={"/app/user-list"}>User List</Link>
             <div/>
             <label style={{color:'red'}}>{state.msg}</label>
             <div/>
             <label>User name
-                <input name="username" value={state.user.username} onChange={onChange}/>
+                <input name="username" value={state.obj.username} onChange={onChange}/>
             </label>
             <br/>
             <label>Password
-                <input name="password" value={state.user.password} onChange={onChange}/>
+                <input name="password" value={state.obj.password} onChange={onChange}/>
             </label>
             <div/>
             <button onClick={

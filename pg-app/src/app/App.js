@@ -6,12 +6,14 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 export const App = () => {
 
-    const initialUserState = {
-        user: {
+    const initialState = {
+        obj: {
             // username: '',
-            // password: '',
+            // pa6ssword: '',
         },
-        users: []
+        list: [],
+        msg: '',
+
     }
 
     const mainReducer = (state, action) => {
@@ -19,20 +21,20 @@ export const App = () => {
         state = {...state, msg: action.msg}
         switch (action.type) {
             case 'list':
-                return {...state, users: action.users}
+                return {...state, list: action.list}
             case 'fetch':
-                return {...state, user: action.user}
+                return {...state, obj: action.obj}
             case 'set':
-                return {...state, user: {...state.user, [action.fieldName]: action.fieldValue}}
+                return {...state, obj: {...state.obj, [action.fieldName]: action.fieldValue}}
             case 'create':
                return state
             default:
-                return initialUserState
+                return initialState
         }
     }
 
     return (
-        <StateProvider initialState={initialUserState} reducer={mainReducer}>
+        <StateProvider initialState={initialState} reducer={mainReducer}>
             <Router>
                 <Switch>
                     <Route exact path="/app/user/:userId">
@@ -40,7 +42,7 @@ export const App = () => {
                     </Route>
                 </Switch>
                 <Switch>
-                    <Route exact path="/app/userList">
+                    <Route exact path="/app/user-list">
                         <UserList/>
                     </Route>
                 </Switch>
