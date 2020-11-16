@@ -4,7 +4,7 @@ import {App} from './App';
 // import './App.css';
 // import './index.css';
 // import './Style.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
     <App/>,
