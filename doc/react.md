@@ -72,21 +72,27 @@
 - https://ant.design/components/transfer/  
     - https://www.reddit.com/r/reactjs/comments/93j4iv/thoughts_on_blueprint_vs_ant_design_vs_semantic/
     - ant design is made in China 
-- https://github.com/mui-org/material-ui (todo)
+- https://github.com/mui-org/material-ui 
     - > npm list @material-ui/core
     - > npm install @material-ui/icons
     - https://developer.mozilla.org/en-US/docs/Web/CSS/@media
     - https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries
     - https://medium.com/%E9%BA%A5%E5%85%8B%E7%9A%84%E5%8D%8A%E8%B7%AF%E5%87%BA%E5%AE%B6%E7%AD%86%E8%A8%98/css-%E5%B0%8F%E6%8A%80%E5%B7%A7%E5%88%86%E4%BA%
     AB-em-%E5%96%AE%E4%BD%8D%E7%9A%84%E5%BC%B7%E5%A4%A7%E7%94%A8%E9%80%94-457dc30a83b4
-    - https://material-ui.com/styles/api/
     - React hooks project 
        - https://www.youtube.com/watch?v=fxY1q4SCB64&t=145s
         - https://github.com/WebDevSimplified/GitHub-Jobs-API-React-App
-    - React dev tools 
+    - React developer tools 
         - https://addons.mozilla.org/en-US/firefox/addon/react-devtools/
     - Issue: Using request cancellation 
         - If request not cancelled, the slow request still wait to render 
+    - Learn steps 
+        - Use viewport meta : <meta
+                name="viewport"
+                content="minimum-scale=1, initial-scale=1, width=device-width"
+                />
+        - Use its template: https://github.com/mui-org/material-ui/tree/master/docs/src/pages/getting-started/templates/checkout
+        - 
 
 8. Submit block screen and show success msg in a box 
 - https://github.com/derrickpelletier/react-loading-overlay
