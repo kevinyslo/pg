@@ -45,7 +45,27 @@ and cannot recovered by change master log and pos
 - http://cbonte.github.io/haproxy-dconv/1.8/configuration.html
 - Apache2 Logging 
     - https://stackoverflow.com/questions/525057/why-cant-i-get-apaches-customlog-directive-to-work
-    - http s://www.loggly.com/ultimate-guide/apache-logging-basics/ 
+    - https://www.loggly.com/ultimate-guide/apache-logging-basics/ 
+- Block IP from web server (todo) 
+    - https://helpx.adobe.com/hk_zh/experience-manager/kb/block-ips-apache-http-server.html
+    - https://stackoverflow.com/questions/3264233/apache-block-an-ip-address-from-accessing-the-website
+    - https://httpd.apache.org/docs/2.4/mod/mod_authz_core.html#require
+    - https://stackoverflow.com/questions/41603383/how-to-install-mod-authz-core-module-for-mamp-installed-apache
+    - https://www.tecmint.com/check-apache-modules-enabled/
+        - Show loaded modules: > apache2ctl -M
+        - https://192.168.0.109/server-status
+    - Steps :     
+        - For using load balancer (haproxy), load remoteip module: > ln -s ../mods-available/remoteip.load remoteip.load 
+        - Include block-ip.conf to RemoteIPHeader X-Forwarded-For
+        - In apache2.conf, Require not ip {blocked-ip}, e.g. 112.119.222.120 
+https://www.tecmint.com/protect-apache-using-mod_security-and-mod_evasive-on-rhel-centos-fedora/
+
+
+- Check my ip address (including ISP, country, ..)
+    - https://whatismyipaddress.com/
+- Haproxy + Jboss is ok, Haproxy + apache2 is for testing only
+    - From haproxy.log, it can see the client ip and request path 
+        Nov 29 15:32:57 server1 haproxy[1093]: 192.168.0.109:53984 [29/Nov/2020:15:32:57.564] web-cluster~ web-cluster/web-1 0/0/0/1/1 200 3421 - - ---- 1/1/0/1/0 0/0 "GET /index.html HTTP/1.1"
 
 ### 3. Corosync + Pacemaker 
 1. Found Problems 
