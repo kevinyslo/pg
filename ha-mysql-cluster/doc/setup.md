@@ -46,7 +46,7 @@ and cannot recovered by change master log and pos
 - Apache2 Logging 
     - https://stackoverflow.com/questions/525057/why-cant-i-get-apaches-customlog-directive-to-work
     - https://www.loggly.com/ultimate-guide/apache-logging-basics/ 
-- Block IP from web server (todo) 
+- Block IP from web server (apache)
     - https://helpx.adobe.com/hk_zh/experience-manager/kb/block-ips-apache-http-server.html
     - https://stackoverflow.com/questions/3264233/apache-block-an-ip-address-from-accessing-the-website
     - https://httpd.apache.org/docs/2.4/mod/mod_authz_core.html#require
@@ -57,10 +57,29 @@ and cannot recovered by change master log and pos
     - Steps :     
         - For using load balancer (haproxy), load remoteip module: > ln -s ../mods-available/remoteip.load remoteip.load 
         - Include block-ip.conf to RemoteIPHeader X-Forwarded-For
-        - In apache2.conf, Require not ip {blocked-ip}, e.g. 112.119.222.120 
-https://www.tecmint.com/protect-apache-using-mod_security-and-mod_evasive-on-rhel-centos-fedora/
-
-
+        - In apache2.conf, Require not ip {blocked-ip}, e.g. 112.119.222.120    
+- CRS and Prevent Dos (apache)
+    - https://www.tecmint.com/protect-apache-using-mod_security-and-mod_evasive-on-rhel-centos-fedora/
+    - https://www.tecmint.com/useful-basic-commands-of-apt-get-and-apt-cache-for-package-management/
+    - https://help.ubuntu.com/community/UFW
+        > whois 112.119.222.120
+        > ufw status
+            Status: active
+            To                         Action      From
+            --                         ------      ----
+            443                        ALLOW       Anywhere
+            80                         ALLOW       Anywhere
+            Anywhere                   ALLOW       192.168.0.109
+            3306                       ALLOW       Anywhere
+            Anywhere                   ALLOW       192.168.0.0/24
+            443 (v6)                   ALLOW       Anywhere (v6)
+            80 (v6)                    ALLOW       Anywhere (v6)
+            3306 (v6)                  ALLOW       Anywhere (v6)
+    - https://hostadvice.com/how-to/how-to-setup-modsecurity-for-apache-on-ubuntu-18-04/
+    - https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual-%28v2.x%29
+    - https://www.atlantic.net/vps-hosting/how-to-install-and-configure-modevasive-with-apache-on-ubuntu-18-04/
+    - http://codingshower.com/apache-server-get-actual-client-ip-address-behind-proxy-or-load-balancer/
+    - Behine reverse proxy / load balance, mod evasive is not feasible since it will block proxy traffic to cause the site down !
 - Check my ip address (including ISP, country, ..)
     - https://whatismyipaddress.com/
 - Haproxy + Jboss is ok, Haproxy + apache2 is for testing only

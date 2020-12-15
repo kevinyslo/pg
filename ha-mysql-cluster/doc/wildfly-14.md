@@ -56,7 +56,10 @@ iiop                      jgroups-udp               txn-recovery-environment
     - http://www.mastertheboss.com/jboss-server/jboss-datasource/demystifying-datasource-jta-and-xa-settings-on-jboss-wildfly
     - https://stackoverflow.com/questions/39134984/wildfly-10-amq119032-user-does-not-have-permission-create-non-durable-queue-on
     - https://dzone.com/articles/types-of-jmscontext-in-jms-20
-    
+
+# Block IP 
+- http://www.mastertheboss.com/jboss-server/jboss-configuration/how-to-bind-wildfly-to-an-ip-address
+
 # Spring boot integration (mysql + jms) (TODO) (6/4 1 wk) (end)
 - refer tp spring-boot.md
 
