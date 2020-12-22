@@ -4,12 +4,13 @@ import { UserList } from "./UserList";
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Checkout from "../checkout/Checkout";
+import { Container } from "@material-ui/core";
 
 export const App = () => {
   const initialState = {
     obj: {
       // username: '',
-      // pa6ssword: '',
+      // password: '',
     },
     list: [],
     msg: "",
@@ -37,19 +38,21 @@ export const App = () => {
 
   return (
     <StateProvider initialState={initialState} reducer={mainReducer}>
-      <Router>
-        <Switch>
-          <Route exact path="/app">
-            <Checkout />
-          </Route>
-          <Route exact path="/app/user/:userId">
-            <UserPage />
-          </Route>
-          <Route exact path="/app/user-list">
-            <UserList />
-          </Route>
-        </Switch>
-      </Router>
+      <Container>
+        <Router>
+          <Switch>
+            <Route exact path="/app">
+              <Checkout />
+            </Route>
+            <Route exact path="/app/user/:userId">
+              <UserPage />
+            </Route>
+            <Route exact path="/app/user-list">
+              <UserList />
+            </Route>
+          </Switch>
+        </Router>
+      </Container>
     </StateProvider>
   );
 };

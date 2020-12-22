@@ -86,6 +86,14 @@
                 />
         - Use its template: https://github.com/mui-org/material-ui/tree/master/docs/src/pages/getting-started/templates/checkout
         - But its grid sorting required commcerial version, it ng 
+    - https://www.digitalocean.com/community/tutorials/react-material-ui
+    - Design :
+        - https://material.io/design/layout/responsive-layout-grid.html
+        - https://ithelp.ithome.com.tw/articles/10192806
+    - CSS:  
+        - https://developer.mozilla.org/en-US/docs/Web/CSS/bottom
+        
+
 - React hooks project 
     - https://www.youtube.com/watch?v=fxY1q4SCB64&t=145s
     - https://github.com/WebDevSimplified/GitHub-Jobs-API-React-App
