@@ -92,7 +92,14 @@
         - https://ithelp.ithome.com.tw/articles/10192806
     - CSS:  
         - https://developer.mozilla.org/en-US/docs/Web/CSS/bottom
-        
+    - Design drawer:
+        1. Design layout (appbar, drawer, ...)
+        2. Design functionalities (drawer menu button, ...)
+        3. Design responsive 
+            - https://www.mydevice.io/
+            - https://wcc723.github.io/css/2017/07/21/css-flex/
+
+- TODO: webpack prod -> testing (java , js)  -> docker (spring app server + mq) + kubernate 
 
 - React hooks project 
     - https://www.youtube.com/watch?v=fxY1q4SCB64&t=145s

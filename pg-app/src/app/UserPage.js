@@ -6,14 +6,15 @@ import LoadingOverlay from "react-loading-overlay";
 import {
   BottomNavigation,
   BottomNavigationAction,
+  Button,
   Grid,
 } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-import RefreshIcon from "@material-ui/icons/Refresh";
+import { Add, Refresh } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
-  stickToBottom: {
+  bottomNav: {
     width: "100%",
     position: "fixed",
     bottom: 0,
@@ -34,24 +35,24 @@ export const UserPage = (props) => {
     setStatus("loaded");
     dispatch({
       type: "fetch",
-      obj: { username: result.data.username, password: result.data.password },
+      item: { username: result.data.username, password: result.data.password },
     });
   }
 
   async function createUser() {
     try {
       setStatus("loading");
-      await axios.post("/api/app/user", state.obj);
+      await axios.post("/api/app/user", state.item);
       setStatus("loaded");
       dispatch({
         type: "create",
-        msg: `Create user ${state.obj.username} successfully !`,
+        msg: `Create user ${state.item.username} successfully !`,
       });
     } catch (e) {
       setStatus("error");
       dispatch({
         type: "create",
-        msg: `Create user ${state.obj.username} fail !`,
+        msg: `Create user ${state.item.username} fail !`,
       });
     }
   }
@@ -87,16 +88,13 @@ export const UserPage = (props) => {
       >
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <Link to={"/app/user-list"}>User List</Link>
-          </Grid>
-          <Grid item xs={12}>
             <label style={{ color: "red" }}>{state.msg}</label>
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
               label="User name"
               name="username"
-              value={state.obj.username}
+              value={state.item.username}
               onChange={onChange}
               InputLabelProps={{
                 shrink: true,
@@ -108,7 +106,7 @@ export const UserPage = (props) => {
               label={"Password"}
               name="password"
               fullWidth
-              value={state.obj.password}
+              value={state.item.password}
               onChange={onChange}
               InputLabelProps={{
                 shrink: true,
@@ -116,20 +114,22 @@ export const UserPage = (props) => {
             />
           </Grid>
           <Grid item xs={12}>
-            <button
-              onClick={() => {
-                fetchUser();
-                // history.push("/app")
-              }}
+            <Button
+              color="primary"
+              startIcon={<Add />}
+              variant="contained"
+              onClick={onClick}
             >
-              Refresh
-            </button>
-            <button onClick={onClick}>Create User</button>
+              Create User
+            </Button>
           </Grid>
         </Grid>
       </LoadingOverlay>
-      <BottomNavigation classes={{ root: classes.stickToBottom }}>
-        <BottomNavigationAction label={"Refresh"} icon={<RefreshIcon />} />
+      <BottomNavigation
+        onChange={() => fetchUser()}
+        className={classes.bottomNav}
+      >
+        <BottomNavigationAction label={"Refresh"} icon={<Refresh />} />
       </BottomNavigation>
     </div>
   );
