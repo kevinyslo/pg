@@ -98,7 +98,13 @@
         3. Design responsive 
             - https://www.mydevice.io/
             - https://wcc723.github.io/css/2017/07/21/css-flex/
+            - https://css-tricks.com/couple-takes-sticky-footer/
+            - https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance
+            - https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance
+            - https://stackoverflow.com/questions/57474707/full-height-width-without-scrollbar-in-material-ui-react-app
 
+
+            
 - TODO: webpack prod -> testing (java , js)  -> docker (spring app server + mq) + kubernate 
 
 - React hooks project 

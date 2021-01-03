@@ -13,13 +13,28 @@ import TextField from "@material-ui/core/TextField";
 import { Add, Refresh } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
+  layout: {
+    display: "flex",
+    flexDirection: "column",
+    minHeight: "calc(100vh - 56px)",
+    "@media (min-width:0px) and (orientation: landscape)": {
+      minHeight: "calc(100vh - 48px)",
+    },
+    "@media (min-width:600px)": { minHeight: "calc(100vh - 64px)" },
+  },
+  content: {
+    flex: "1 0 auto",
+  },
+  footer: {
+    flexShrink: 0,
+  },
   bottomNav: {
     width: "100%",
     position: "fixed",
     bottom: 0,
   },
-});
+}));
 
 export const UserPage = (props) => {
   // const history = useHistory();
@@ -80,13 +95,14 @@ export const UserPage = (props) => {
   }
 
   return (
-    <div>
-      <LoadingOverlay
-        active={status === "loading" ? true : false}
-        spinner
-        text="Loading your content..."
-      >
-        <Grid container spacing={3}>
+    <LoadingOverlay active={status === "loading" ? true : false} spinner>
+      <div className={classes.layout}>
+        <Grid
+          className={classes.content}
+          container
+          spacing={3}
+          alignContent={"flex-start"}
+        >
           <Grid item xs={12}>
             <label style={{ color: "red" }}>{state.msg}</label>
           </Grid>
@@ -124,13 +140,14 @@ export const UserPage = (props) => {
             </Button>
           </Grid>
         </Grid>
-      </LoadingOverlay>
-      <BottomNavigation
-        onChange={() => fetchUser()}
-        className={classes.bottomNav}
-      >
-        <BottomNavigationAction label={"Refresh"} icon={<Refresh />} />
-      </BottomNavigation>
-    </div>
+        <BottomNavigation
+          className={classes.footer}
+          onChange={() => fetchUser()}
+          // className={classes.bottomNav}
+        >
+          <BottomNavigationAction label={"Refresh"} icon={<Refresh />} />
+        </BottomNavigation>
+      </div>
+    </LoadingOverlay>
   );
 };
