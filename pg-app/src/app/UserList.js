@@ -11,9 +11,38 @@ import {
   TableCell,
   TextField,
   Grid,
+  BottomNavigation,
+  BottomNavigationAction,
+  makeStyles,
 } from "@material-ui/core";
+import { Refresh } from "@material-ui/icons";
+
+const useStyles = makeStyles((theme) => ({
+  layout: {
+    display: "flex",
+    flexDirection: "column",
+    minHeight: "calc(100vh - 56px)",
+    "@media (min-width:0px) and (orientation: landscape)": {
+      minHeight: "calc(100vh - 48px)",
+    },
+    "@media (min-width:600px)": { minHeight: "calc(100vh - 64px)" },
+  },
+  content: {
+    flex: "1 0 auto",
+  },
+  bottomPad: {
+    flexShrink: 0,
+    height: "56px",
+  },
+  bottomNav: {
+    width: "100%",
+    position: "fixed",
+    bottom: 0,
+  },
+}));
 
 export const UserList = (props) => {
+  const classes = useStyles();
   const [state, dispatch] = useStateValue();
   const [username, setUsername] = useState("");
 
@@ -50,38 +79,53 @@ export const UserList = (props) => {
 
   return (
     <>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <TextField
-            name="username"
-            label={"Search by Username"}
-            fullWidth
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <TableContainer>
-            <Table size={"small"}>
-              <TableHead>
-                <TableRow>
-                  <TableCell>User Name</TableCell>
-                  <TableCell>Password</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {state.list.map((u) => (
-                  <TableRow key={u.id}>
-                    <TableCell>
-                      <Link to={`/app/user/${u.id}`}>{u.username}</Link>
-                    </TableCell>
-                    <TableCell>{u.password}</TableCell>
+      <div className={classes.layout}>
+        <Grid
+          className={classes.content}
+          container
+          alignContent={"flex-start"}
+          spacing={3}
+        >
+          <Grid item xs={12}>
+            <TextField
+              name="username"
+              value={username}
+              label={"Search by Username"}
+              fullWidth
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TableContainer>
+              <Table size={"small"}>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>User Name</TableCell>
+                    <TableCell>Password</TableCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                </TableHead>
+                <TableBody>
+                  {state.list.map((u) => (
+                    <TableRow key={u.id}>
+                      <TableCell>
+                        <Link to={`/app/user/${u.id}`}>{u.username}</Link>
+                      </TableCell>
+                      <TableCell>{u.password}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Grid>
         </Grid>
-      </Grid>
+        <div className={classes.bottomPad} />
+      </div>
+      <BottomNavigation
+        onChange={() => setUsername("")}
+        className={classes.bottomNav}
+      >
+        <BottomNavigationAction label={"Refresh"} icon={<Refresh />} />
+      </BottomNavigation>
     </>
   );
 };
