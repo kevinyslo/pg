@@ -171,7 +171,7 @@ export const App = () => {
         </Toolbar>
       </AppBar>
       <Container>
-        <Router>
+        <Router basename={"/pg"}>
           <nav>
             <TempDrawer />
             <PermDrawer />
