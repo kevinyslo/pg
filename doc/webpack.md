@@ -1,4 +1,4 @@
-# Webpack build for production 
+ # Webpack build for production 
 - > npm run build 
 - basename by react router: https://create-react-app.dev/docs/deployment 
 - basename by webpack : https://webpack.js.org/configuration/output/#outputpublicpath
@@ -17,3 +17,40 @@
     - event loop: https://nodejs.dev/learn/the-nodejs-event-loop
 - WebStorm usage 
     - Node js coding assistant : https://www.jetbrains.com/help/webstorm/2020.2/configuring-javascript-libraries.html#4b09d
+- Vim with eslint
+    - https://medium.com/@jimeno0/eslint-and-prettier-in-vim-neovim-7e45f85cf8f9
+    - https://github.com/dense-analysis/ale#usage-fixing
+    - https://github.com/junegunn/vim-plug
+    - https://www.chunkhang.com/blog/using-eslint-in-vim-for-react
+    - Install   
+        - Super Shell > iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
+    ni $HOME/.vim/autoload/plug.vim -Force
+        - > touch ~/.vimrc (or ~/.vim/vimrc) and :source ./vimrc and then :PlugInstall 
+        - Js project should have eslint --init -> .eslintrc.js. Otherwise, ALE throw error (can check :ALEInfo) and eslint install locally better
+    - Vim Commands (:)
+        - source ~/.vimrc 
+        - !ls (Shell ls)
+    - Debug vimrc 
+        - https://vi.stackexchange.com/questions/2003/how-do-i-debug-my-vimrc-file
+        - http://inlehmansterms.net/2014/10/31/debugging-vim/
+    - ALE :
+         - https://www.danielfranklin.id.au/configuring-ale-to-use-project-specific-tools-in-vim/
+         - https://vi.stackexchange.com/questions/26560/cannot-set-gale-fixers-in-ale-config-on-vim
+    - Neovim 
+        - https://ithelp.ithome.com.tw/articles/10235745
+        - C:\Users\kevin Lo\AppData\Local\nvim\
+            - plugged 
+            - init.vim 
+- Vim and ALE 
+    - Vim normal mode:
+        - ctrl p : click into 
+        - ctrl i : history forward
+        - ctrl o : history backward 
+    - Vim command mode:
+        - :help 
+        - :help ale 
+        - :help: ale-commands (can partial)
+        - :ALEInfo
+    - debug:
+        - > vim -V
+        - > vim --startuptime <file>

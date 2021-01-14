@@ -10,5 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "cowsay": "^1.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.17.0",
+    "eslint-plugin-react": "^7.22.0"
   }
 }

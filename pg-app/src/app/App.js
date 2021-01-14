@@ -1,15 +1,15 @@
-import { StateProvider } from "./State";
-import { UserPage } from "./UserPage";
-import { UserList } from "./UserList";
-import React, { useState } from "react";
+import { StateProvider } from './State';
+import { UserPage } from './UserPage';
+import { UserList } from './UserList';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Link,
   Route,
   Switch,
   useHistory,
-} from "react-router-dom";
-import Checkout from "../checkout/Checkout";
+} from 'react-router-dom';
+import Checkout from '../checkout/Checkout';
 import {
   AppBar,
   Container,
@@ -26,21 +26,21 @@ import {
   Toolbar,
   Typography,
   useTheme,
-} from "@material-ui/core";
-import { Menu, People } from "@material-ui/icons";
-import LoadingOverlay from "react-loading-overlay";
+} from '@material-ui/core';
+import { Menu, People } from '@material-ui/icons';
+// import LoadingOverlay from "react-loading-overlay";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up('md')]: {
       width: `calc(100% - 240px)`,
       marginLeft: 240,
     },
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    [theme.breakpoints.up("md")]: {
-      display: "none",
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
     },
   },
   toolbar: theme.mixins.toolbar,
@@ -58,23 +58,26 @@ export const App = () => {
       // password: '',
     },
     list: [],
-    msg: "",
+    msg: '',
   };
 
   const mainReducer = (state, action) => {
     // state.msg = action.msg  // not working
     state = { ...state, msg: action.msg };
     switch (action.type) {
-      case "list":
+      case 'list':
         return { ...state, list: action.list };
-      case "fetch":
+      case 'fetch':
         return { ...state, item: action.item };
-      case "set":
+      case 'set':
         return {
           ...state,
-          item: { ...state.item, [action.fieldName]: action.fieldValue },
+          item: {
+            ...state.item,
+            [action.fieldName]: action.fieldValue,
+          },
         };
-      case "create":
+      case 'create':
         return state;
       default:
         return initialState;
@@ -102,7 +105,7 @@ export const App = () => {
           classes={{
             paper: classes.drawerPaper,
           }}
-          variant={"temporary"}
+          variant={'temporary'}
           open={drawerOpen}
           onClose={() => setDrawerOpen(false)}
         >
@@ -120,7 +123,7 @@ export const App = () => {
           classes={{
             paper: classes.drawerPaper,
           }}
-          variant={"permanent"}
+          variant={'permanent'}
           open={drawerOpen}
           onClose={() => setDrawerOpen(false)}
         >
@@ -138,9 +141,9 @@ export const App = () => {
         <List>
           <ListItem
             button
-            key={"user-list"}
+            key={'user-list'}
             onClick={() => {
-              history.push("/app/user-list");
+              history.push('/app/user-list');
               setDrawerOpen(false);
             }}
           >
@@ -148,7 +151,7 @@ export const App = () => {
             <ListItemIcon>
               <People />
             </ListItemIcon>
-            <ListItemText primary={"User List"} />
+            <ListItemText primary={'User List'} />
           </ListItem>
         </List>
       </div>
@@ -165,13 +168,14 @@ export const App = () => {
           >
             <Menu />
           </IconButton>
-          <Typography variant={"h6"} noWrap>
+          <Typography variant={'h6'} noWrap>
             My Playground
           </Typography>
         </Toolbar>
       </AppBar>
       <Container>
-        <Router basename={"/pg"}>
+        {/*<Router basename={"/pg"}>*/}
+        <Router>
           <nav>
             <TempDrawer />
             <PermDrawer />
@@ -180,7 +184,7 @@ export const App = () => {
             <div className={classes.toolbar} />
             <Switch>
               <Route exact path="/app">
-                <Checkout />
+                <UserPage />
               </Route>
               <Route exact path="/app/user/:userId">
                 <UserPage />
