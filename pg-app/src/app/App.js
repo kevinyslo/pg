@@ -174,8 +174,8 @@ export const App = () => {
         </Toolbar>
       </AppBar>
       <Container>
+        {/*Sure router path should have "pg" basename */}
         <Router basename={'/pg'}>
-          {/*<Router>*/}
           <nav>
             <TempDrawer />
             <PermDrawer />
