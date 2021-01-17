@@ -14,7 +14,7 @@ const sockHost = process.env.WDS_SOCKET_HOST;
 const sockPath = process.env.WDS_SOCKET_PATH; // default: '/sockjs-node'
 const sockPort = process.env.WDS_SOCKET_PORT;
 
-module.exports = function(proxy, allowedHost) {
+module.exports = function (proxy, allowedHost) {
   return {
     // WebpackDevServer 2.4.3 introduced a security fix that prevents remote
     // websites from potentially accessing local content through DNS rebinding:
@@ -98,27 +98,27 @@ module.exports = function(proxy, allowedHost) {
       // See https://github.com/facebook/create-react-app/issues/387.
       disableDotRule: true,
       verbose: true,
+      // default is /index.html
       // index: paths.publicUrlOrPath,
       rewrites: [
-        { from: /^\/context/, to: '/contenxt/index.html' },
-        { from: /^\/context2/, to: '/contenxt2/index.html' },
-        { from: /^\/app/, to: '/app/index.html' },
-
-      ]
+        { from: /^\/pg\/context/, to: '/context/index.html' },
+        { from: /^\/pg\/context2/, to: '/context2/index.html' },
+        { from: /^\/pg\/app/, to: '/app/index.html' },
+      ],
     },
     public: allowedHost,
     // `proxy` is run between `before` and `after` `webpack-dev-server` hooks
     proxy: {
-      "/api": {
+      '/api': {
         target: {
-          host: "0.0.0.0",
+          host: '0.0.0.0',
           protocol: 'http:',
-          port: 8082
+          port: 8082,
         },
         pathRewrite: {
           // '^/api': ''
-        }
-      }
+        },
+      },
     },
     before(app, server) {
       // Keep `evalSourceMapMiddleware` and `errorOverlayMiddleware`

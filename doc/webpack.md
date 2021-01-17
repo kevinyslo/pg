@@ -41,16 +41,25 @@
         - C:\Users\kevin Lo\AppData\Local\nvim\
             - plugged 
             - init.vim 
-- Vim and ALE 
-    - Vim normal mode:
-        - ctrl p : click into 
-        - ctrl i : history forward
-        - ctrl o : history backward 
-    - Vim command mode:
-        - :help 
-        - :help ale 
-        - :help: ale-commands (can partial)
-        - :ALEInfo
-    - debug:
-        - > vim -V
-        - > vim --startuptime <file>
+    - Vim and ALE 
+        - Vim normal mode:
+            - ctrl p : click into 
+            - ctrl i : history forward
+            - ctrl o : history backward 
+        - Vim command mode:
+            - :help 
+            - :help ale 
+            - :help: ale-commands (can partial)
+            - :ALEInfo
+        - debug:
+            - > vim -V
+            - > vim --startuptime <file>
+    - The problem's solution 
+        - Dev: 
+            - The process.env PUBLIC_URL for ejected create react app: https://dwatow.github.io/2019/01-26-node-with-env-first/
+            - React router basename: https://reactrouter.com/web/api/BrowserRouter
+            - Webpack history api: https://github.com/bripkens/connect-history-api-fallback
+
+
+- Reack Hook 
+    - concept : https://www.netlify.com/blog/2019/03/11/deep-dive-how-do-react-hooks-really-work/
