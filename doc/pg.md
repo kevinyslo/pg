@@ -106,4 +106,10 @@
 - https://blog.techbridge.cc/2018/01/17/learning-programming-and-coding-with-python-git-and-github-tutorial/
 - ssh 
     - https://medium.com/%E6%B5%A6%E5%B3%B6%E5%A4%AA%E9%83%8E%E7%9A%84%E6%B0%B4%E6%97%8F%E7%BC%B8/how-to-setup-ssh-config-%E4%BD%BF%E7%94%A8-ssh-%E8%A8%AD%E5%AE%9A%E6%AA%94-74ad46f99818
-    
+
+# JMS
+- Problem: XA transaction cannot rollback in local 
+    - [atomiko](./Transactions-with-Spring.pdf)
+
+- Datasource concept 
+    - https://zetcode.com/java/datasource/
