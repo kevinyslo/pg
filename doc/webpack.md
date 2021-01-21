@@ -16,7 +16,10 @@
     - npx nodejs package runner: https://nodejs.dev/learn/the-npx-nodejs-package-runner
     - event loop: https://nodejs.dev/learn/the-nodejs-event-loop
 - WebStorm usage 
-    - Node js coding assistant : https://www.jetbrains.com/help/webstorm/2020.2/configuring-javascript-libraries.html#4b09d
+   - Node js coding assistant : https://www.jetbrains.com/help/webstorm/2020.2/configuring-javascript-libraries.html#4b09d
+- Vscode usage:
+   - https://www.pluralsight.com/guides/visual-studio-code-for-node.js-development
+   - Node.js Modules Intellisense: https://marketplace.visualstudio.com/items?itemName=leizongmin.node-module-intellisense
 - Vim with eslint
     - https://medium.com/@jimeno0/eslint-and-prettier-in-vim-neovim-7e45f85cf8f9
     - https://github.com/dense-analysis/ale#usage-fixing

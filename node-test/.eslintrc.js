@@ -1,8 +1,8 @@
 module.exports = {
     "env": {
         "browser": true,
-        "es2020": true, 
-        "node": true,
+        "commonjs": true,
+        "es2021": true
     },
     "extends": [
         "eslint:recommended",
@@ -12,8 +12,7 @@ module.exports = {
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": 11,
-        "sourceType": "module"
+        "ecmaVersion": 12
     },
     "plugins": [
         "react"

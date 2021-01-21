@@ -33,3 +33,4 @@ out/
 
 /dev-app/
 /dev-gw/
+/node-test/node_modules
