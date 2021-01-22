@@ -20,6 +20,13 @@
 - Vscode usage:
    - https://www.pluralsight.com/guides/visual-studio-code-for-node.js-development
    - Node.js Modules Intellisense: https://marketplace.visualstudio.com/items?itemName=leizongmin.node-module-intellisense
+   - Actually, in project package.json is ok : 
+        "devDependencies": {
+            "@types/node": "^14.14.20",
+            "eslint": "^7.17.0",
+            "typescript": "^4.1.3"
+        }
+    - Turn on sync setting: https://code.visualstudio.com/docs/editor/settings-sync
 - Vim with eslint
     - https://medium.com/@jimeno0/eslint-and-prettier-in-vim-neovim-7e45f85cf8f9
     - https://github.com/dense-analysis/ale#usage-fixing

@@ -28,8 +28,6 @@ out/
 /nbdist/
 /.nb-gradle/
 
-### VS Code ###
-.vscode/
 
 /dev-app/
 /dev-gw/
