@@ -25,7 +25,13 @@ public class GatewayUserService {
     @JmsListener(containerFactory = "jmsListenerContainerFactory", destination = "java:jboss/exported/jms/queue/test")
     public void processMessage(User user) {
         // In tx, if rollback, the msg is moved to DLQ (Dead letter queue) by default
+        // We can retry to send DQL in ActiveMQ console (Hawio) and this listener will process message again to
+        // sync will app db
+        boolean isAdmin1Error = true;
         userRepository.save(user);
+        if (user.getUsername().equals("admin1") && isAdmin1Error) {
+            throw new RuntimeException("admin1 should throw exception");
+        }
         log.info("===================== {}", user);
     }
 }

@@ -1,29 +1,15 @@
 package com.lt.pg.config;
 
 import com.atomikos.jms.AtomikosConnectionFactoryBean;
-import org.apache.activemq.ActiveMQPrefetchPolicy;
 import org.apache.activemq.ActiveMQXAConnectionFactory;
-import org.apache.activemq.RedeliveryPolicy;
 import org.apache.activemq.broker.BrokerService;
-import org.apache.activemq.command.ActiveMQQueue;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
 import org.springframework.context.annotation.*;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
-import org.springframework.jms.config.SimpleJmsListenerContainerFactory;
-import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.TransactionDefinition;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.transaction.support.DefaultTransactionDefinition;
-import org.springframework.util.backoff.FixedBackOff;
+import org.springframework.transaction.jta.JtaTransactionManager;
 
 import javax.jms.ConnectionFactory;
-import javax.jms.Queue;
-import javax.jms.Session;
-
-import static org.apache.activemq.ActiveMQSession.INDIVIDUAL_ACKNOWLEDGE;
 
 @Configuration
 @EnableJms
@@ -49,6 +35,8 @@ public class JmsConfig {
         AtomikosConnectionFactoryBean atomikosConnectionFactoryBean = new AtomikosConnectionFactoryBean();
         atomikosConnectionFactoryBean.setMaxPoolSize(10);
         atomikosConnectionFactoryBean.setXaConnectionFactory(cf);
+        // Default is false, i.e. JTA mode
+//        atomikosConnectionFactoryBean.setLocalTransactionMode(false);
         atomikosConnectionFactoryBean.setUniqueResourceName("xamq");
         return atomikosConnectionFactoryBean;
     }
@@ -67,14 +55,18 @@ public class JmsConfig {
     // If customize DefaultJmsListenerContainerFactory, e.g. concurrency, we should inject DefaultJmsListenerContainerFactoryConfigurer
     // bean for allowing Atomkios transaction management
     public DefaultJmsListenerContainerFactory jmsListenerContainerFactory(
-            ConnectionFactory connectionFactory, DefaultJmsListenerContainerFactoryConfigurer configurer) {
+            ConnectionFactory connectionFactory, DefaultJmsListenerContainerFactoryConfigurer configurer, JtaTransactionManager jtaTransactionManager) {
         // DefaultJmsListenerContainerFactory loops create customer session involved unwanted traffic with the broker
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
 //        factory.setMaxMessagesPerTask(1);
         // min 1 up to max 5 connections
         factory.setConcurrency("1-5");
-        // Jms consumer will wait 30s for receiving message
-        factory.setReceiveTimeout(30000L);
+        // --- Start : This already done by DefaultJmsListenerContainerFactoryConfigurer.configure()
+//        factory.setConnectionFactory(connectionFactory);
+//        factory.setTransactionManager(jtaTransactionManager);
+        // ---- End
+        // Jms consumer will wait 20s for receiving message (Should be less than transaction timeout)
+//        factory.setReceiveTimeout(20000L);
 //        factory.setSessionAcknowledgeMode(INDIVIDUAL_ACKNOWLEDGE);
         configurer.configure(factory, connectionFactory);
         return factory;

@@ -18,6 +18,10 @@ public class AppUserService {
     public void createUser(User user) {
         userRepository.save(user);
         jmsTemplate.convertAndSend("java:jboss/exported/jms/queue/test", user);
+        // In Jta transaction, as rollback, both jdbc and jms rollback
+        if (user.getUsername().equals("admin2")) {
+            throw new RuntimeException("admin2 should throw exception");
+        }
     }
 
 }

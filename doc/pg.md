@@ -110,6 +110,8 @@
 # JMS
 - Problem: XA transaction cannot rollback in local 
     - [atomiko](./Transactions-with-Spring.pdf)
-
+    - https://docs.spring.io/spring-boot/docs/2.1.18.RELEASE/reference/html/boot-features-jta.html
+    - This should handle in code , rather than by debugger throw exception. May be Spring transaction manager cannot notice
+    - Spring JTA transaction manager (wrapper of Atomiko transaction manager in dev) for DataSource [jdbc](Atomiko Data source in dev) and ConnectionFactory [jms] (AtomikosConnectionFactoryBean in dev) 
 - Datasource concept 
     - https://zetcode.com/java/datasource/
