@@ -115,3 +115,16 @@
     - Spring JTA transaction manager (wrapper of Atomiko transaction manager in dev) for DataSource [jdbc](Atomiko Data source in dev) and ConnectionFactory [jms] (AtomikosConnectionFactoryBean in dev) 
 - Datasource concept 
     - https://zetcode.com/java/datasource/
+
+# UAT Setup 
+- Setup remote jndi 
+    - https://access.redhat.com/documentation/en-us/jboss_enterprise_application_platform_continuous_delivery/17/html/development_guide/remote_jndi_lookup
+    - http://www.mastertheboss.com/jboss-server/jboss-jms/connecting-to-an-external-wildfly-jms-server
+
+- Systemctl 
+    - https://www.tecmint.com/list-all-running-services-under-systemd-in-linux/
+    
+- Netty 
+    - https://juejin.cn/post/6844903703183360008
+    - https://www.baeldung.com/netty
+    
