@@ -128,3 +128,37 @@
     - https://juejin.cn/post/6844903703183360008
     - https://www.baeldung.com/netty
     
+- crm 
+    - Both kev-A and kev-B node is online 
+    - root@server2:/# crm status
+            Stack: corosync
+            Current DC: kev-B (version 1.1.18-2b07d5c5a9) - partition WITHOUT quorum
+            Last updated: Tue Jan 26 17:00:40 2021
+            Last change: Tue Jan 26 15:44:55 2021 by root via cibadmin on kev-B
+
+            3 nodes configured
+            2 resources configured
+
+            Online: [ kev-B ]
+            OFFLINE: [ kev-A server1 ]
+
+            Full list of resources:
+
+            virtual_public_ip      (ocf::heartbeat:IPaddr2):       Started kev-B
+            mail_to        (ocf::heartbeat:MailTo):        Started kev-B
+    -  root@server1:/etc# crm status
+            Stack: corosync
+            Current DC: kev-A (version 1.1.18-2b07d5c5a9) - partition WITHOUT quorum
+            Last updated: Tue Jan 26 17:02:09 2021
+            Last change: Mon Jan 25 16:49:52 2021 by root via crm_attribute on kev-A
+
+            3 nodes configured
+            2 resources configured
+
+            Online: [ kev-A ]
+            OFFLINE: [ kev-B server1 ]
+
+            Full list of resources:
+
+            virtual_public_ip      (ocf::heartbeat:IPaddr2):       Started kev-A
+            mail_to        (ocf::heartbeat:MailTo):        Started kev-A
