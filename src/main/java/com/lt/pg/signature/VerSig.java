@@ -32,8 +32,17 @@ package com.lt.pg.signature;
  */
 
 
+import org.apache.commons.codec.binary.Base64;
+import org.bouncycastle.util.io.pem.PemReader;
+
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.*;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
 import java.security.spec.*;
 
 class VerSig {
@@ -42,38 +51,66 @@ class VerSig {
         
         /* Verify a DSA signature */
         
-        if (args.length != 3) {
-            System.out.println("Usage: VerSig publickeyfile signaturefile datafile");
+//        if (args.length != 3) {
+//            System.out.println("Usage: VerSig publickeyfile signaturefile datafile");
+//        }
+        if (args.length != 0) {
+            System.out.println("Usage: VerSig");
         }
         else try{
             
             /* import encoded public key */
+            Path path = Paths.get("C:\\Users\\ad_kevin_ys_lo\\project\\pg\\pg-app\\src\\app\\keystore\\ORG_TRIAL_ONE\\pub");
+            String pem = new String(Files.readAllBytes(path), Charset.defaultCharset());
+    
+//            String publicKeyPEM = key
+//                    .replace("-----BEGIN CERTIFICATE-----", "")
+//                    .replaceAll(System.lineSeparator(), "")
+//                    .replace("-----END CERTIFICATE-----", "");
+//            byte[] encoded = Base64.decodeBase64(publicKeyPEM);
+    
+            byte[] encoded;
+            PublicKey pubKey;
+            try (StringReader reader = new StringReader(pem)) {
+                try (PemReader pemReader = new PemReader(reader)) {
+                    encoded = pemReader.readPemObject().getContent();
+                    CertificateFactory factory = CertificateFactory.getInstance("X.509");
+                    X509Certificate cert = (X509Certificate) factory.generateCertificate(new ByteArrayInputStream(encoded));
+                    pubKey = cert.getPublicKey();
+                }
+            }
+    
+//            KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+//            X509EncodedKeySpec pubKeySpec = new X509EncodedKeySpec(encoded);
             
-            FileInputStream keyfis = new FileInputStream(args[0]);
-            byte[] encKey = new byte[keyfis.available()];
-            keyfis.read(encKey);
             
-            keyfis.close();
+//            FileInputStream keyfis = new FileInputStream(args[0]);
+//            byte[] encKey = new byte[keyfis.available()];
+//            keyfis.read(encKey);
+//            
+//            keyfis.close();
+//            
+//            X509EncodedKeySpec pubKeySpec = new X509EncodedKeySpec(encKey);
             
-            X509EncodedKeySpec pubKeySpec = new X509EncodedKeySpec(encKey);
+//            KeyFactory keyFactory = KeyFactory.getInstance("DSA", "SUN");
             
-            KeyFactory keyFactory = KeyFactory.getInstance("DSA", "SUN");
-            PublicKey pubKey = keyFactory.generatePublic(pubKeySpec);
+            
+//            pubKey = keyFactory.generatePublic(pubKeySpec);
             
             /* input the signature bytes */
-            FileInputStream sigfis = new FileInputStream(args[1]);
+            FileInputStream sigfis = new FileInputStream("C:\\Users\\ad_kevin_ys_lo\\project\\pg\\pg-app\\src\\app\\keystore\\ORG_TRIAL_ONE\\sig");
             byte[] sigToVerify = new byte[sigfis.available()];
             sigfis.read(sigToVerify );
             
             sigfis.close();
             
             /* create a Signature object and initialize it with the public key */
-            Signature sig = Signature.getInstance("SHA1withDSA", "SUN");
+            Signature sig = Signature.getInstance("SHA256withRSA");
             sig.initVerify(pubKey);
             
             /* Update and verify the data */
             
-            FileInputStream datafis = new FileInputStream(args[2]);
+            FileInputStream datafis = new FileInputStream("C:\\Users\\ad_kevin_ys_lo\\project\\pg\\pg-app\\src\\app\\keystore\\ORG_TRIAL_ONE\\data");
             BufferedInputStream bufin = new BufferedInputStream(datafis);
             
             byte[] buffer = new byte[1024];
@@ -92,7 +129,7 @@ class VerSig {
             
             
         } catch (Exception e) {
-            System.err.println("Caught exception " + e.toString());
+            e.printStackTrace(System.err);
         };
         
     }
