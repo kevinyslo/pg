@@ -5,14 +5,17 @@ plugins {
 //	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
 	id 'war'
+	id 'idea'
 	id 'io.github.divinespear.jpa-schema-generate' version '0.3.5.1'
 }
+
+apply plugin: 'project-report'
 
 group = 'com.lt'
 version = '0.0.1-SNAPSHOT'
 // use java 8 to compile since wildfly 14 only support it
-//sourceCompatibility = JavaVersion.VERSION_1_8
-sourceCompatibility = 11
+sourceCompatibility = JavaVersion.VERSION_1_8
+//sourceCompatibility = 11
 
 
 configurations {
@@ -36,6 +39,9 @@ ext {
 	set('springBootAdminVersion', "2.2.1")
 }
 
+//sourceSets {
+//	main()
+//}
 
 processResources {
 	from ('/src/main/resources') {
@@ -67,6 +73,9 @@ dependencies {
 	implementation 'de.codecentric:spring-boot-admin-starter-server'
 	implementation 'org.springframework.data:spring-data-rest-hal-browser'
 	implementation 'org.springframework.session:spring-session-core'
+
+	implementation 'org.bouncycastle:bcprov-jdk15on:1.63'
+	
 	implementation 'io.hawt:hawtio-springboot:2.6.0'
 	if (project.getProperty('activeProfile').contains('dev')) {
 		// need runtime Servlet classes for bootrun

@@ -105,7 +105,7 @@ class VerSig {
             sigfis.close();
             
             /* create a Signature object and initialize it with the public key */
-            Signature sig = Signature.getInstance("SHA1withRSA");
+            Signature sig = Signature.getInstance("SHA256withRSA");
             sig.initVerify(pubKey);
             
             /* Update and verify the data */
