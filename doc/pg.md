@@ -120,14 +120,26 @@
 - Setup remote jndi 
     - https://access.redhat.com/documentation/en-us/jboss_enterprise_application_platform_continuous_delivery/17/html/development_guide/remote_jndi_lookup
     - http://www.mastertheboss.com/jboss-server/jboss-jms/connecting-to-an-external-wildfly-jms-server
-
+    - Java annotation and annotation processor (java 1.5) : 
+        - https://www.baeldung.com/java-custom-annotation
+        - https://iammert.medium.com/annotation-processing-dont-repeat-yourself-generate-your-code-8425e60c6657
+        - https://tomgregory.com/annotation-processors-in-gradle-with-the-annotationprocessor-dependency-configuration/
+        - gradle task :
+            - https://docs.gradle.org/current/dsl/org.gradle.api.Task.html
+            - https://stackoverflow.com/questions/41369110/what-exactly-is-task-type-in-gradle
+            - https://stackoverflow.com/questions/46024574/gradle-task-definition-syntax
+                - project.getTasks().createTask([name: 'greeting', type: GreetingTask])
+        - gradle idea plugin :
+            - https://docs.gradle.org/current/dsl/org.gradle.plugins.ide.idea.model.IdeaModule.html
+        - build android 
+            - Use jdk 1.8 (avoid Could not initialize class com.android.sdklib.repository.AndroidSdkHandler)
+            - Accept android license : https://stackoverflow.com/questions/38096225/automatically-accept-all-sdk-licences
+            - To match gradle version and android plugin : https://developer.android.com/studio/releases/gradle-plugin
 - Systemctl 
     - https://www.tecmint.com/list-all-running-services-under-systemd-in-linux/
-    
 - Netty 
     - https://juejin.cn/post/6844903703183360008
     - https://www.baeldung.com/netty
-    
 - crm 
     - Both kev-A and kev-B node is online 
     - root@server2:/# crm status

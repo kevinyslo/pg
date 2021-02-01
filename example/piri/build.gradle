@@ -1,0 +1,39 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+        google()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.0.0'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        google()
+    }
+
+}
+
+task clean(type: Delete) {
+    println "delete depends on ${clean.getDependsOn()}"
+    delete rootProject.buildDir
+}
+
+task setWrapper(type: Wrapper) {
+    println "setWrapper depends on ${setWrapper.getDependsOn()}"
+    distributionType = Wrapper.DistributionType.ALL
+    gradleVersion '6.1.1'
+}
+
+tasks.named('wrapper') {
+    distributionType = Wrapper.DistributionType.ALL
+    gradleVersion '6.1.1'
+}
