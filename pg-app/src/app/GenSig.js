@@ -38,8 +38,8 @@ let base64data = forge.util.encode64(signature)
 // let buff = Buffer.from(signature, 'binary');
 // let base64data = buff.toString('base64');
 console.log('---------- base64data: ', base64data)
-fs.writeFileSync('./pg-app/src/app/keystore/ORG_TRIAL_ONE/sig', signature, {encoding: 'binary'});
-// fs.writeFileSync('./pg-app/src/app/keystore/ORG_TRIAL_ONE/sig', base64data);
+// fs.writeFileSync('./pg-app/src/app/keystore/ORG_TRIAL_ONE/sig', signature, {encoding: 'binary'});
+fs.writeFileSync('./pg-app/src/app/keystore/ORG_TRIAL_ONE/sig', base64data);
 
 
 // verify by sig from base64

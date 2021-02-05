@@ -32,7 +32,6 @@ package com.lt.pg.signature;
  */
 
 
-import org.apache.commons.codec.binary.Base64;
 import org.bouncycastle.util.io.pem.PemReader;
 
 import java.io.*;
@@ -44,6 +43,7 @@ import java.security.*;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.security.spec.*;
+import java.util.Base64;
 
 class VerSig {
     
@@ -99,17 +99,19 @@ class VerSig {
             
             /* input the signature bytes */
             FileInputStream sigfis = new FileInputStream("C:\\Users\\ad_kevin_ys_lo\\project\\pg\\pg-app\\src\\app\\keystore\\ORG_TRIAL_ONE\\sig");
-            byte[] sigToVerify = new byte[sigfis.available()];
-            sigfis.read(sigToVerify );
+            byte[] sigToVerifyb64 = new byte[sigfis.available()];
+            sigfis.read(sigToVerifyb64);
             
             sigfis.close();
+            
+            // decode signature to binary from base64
+            byte[] sigToVerify = Base64.getDecoder().decode(sigToVerifyb64);
             
             /* create a Signature object and initialize it with the public key */
             Signature sig = Signature.getInstance("SHA256withRSA");
             sig.initVerify(pubKey);
             
             /* Update and verify the data */
-            
             FileInputStream datafis = new FileInputStream("C:\\Users\\ad_kevin_ys_lo\\project\\pg\\pg-app\\src\\app\\keystore\\ORG_TRIAL_ONE\\data");
             BufferedInputStream bufin = new BufferedInputStream(datafis);
             

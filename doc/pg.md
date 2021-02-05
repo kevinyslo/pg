@@ -174,3 +174,13 @@
 
             virtual_public_ip      (ocf::heartbeat:IPaddr2):       Started kev-A
             mail_to        (ocf::heartbeat:MailTo):        Started kev-A
+
+
+# BlockChain 
+- https://ethereum.org/en/
+- https://github.com/ethereum
+- https://www.devteam.space/blog/how-to-use-blockchain-to-build-a-scalable-database/
+- Blockchain node
+    - https://www.smashingmagazine.com/2020/02/cryptocurrency-blockchain-node-js/
+    - https://www.google.com/search?client=firefox-b-d&q=blockchain+node+implementation
+    - https://jis-eurasipjournals.springeropen.com/articles/10.1186/s13635-019-0085-3

@@ -16,7 +16,7 @@ import org.bouncycastle.asn1.*;
  * <pre>
  * 
  */
-public class MyStructure extends ASN1Encodable
+public abstract class MyStructure implements ASN1Encodable
 {
     private DERInteger         version;
     private DERGeneralizedTime created;
@@ -93,28 +93,28 @@ public class MyStructure extends ASN1Encodable
     /* 
      * Produce an object suitable for writing to an ASN1/DEROutputStream
      */
-    public DERObject toASN1Object()
-    {
-        ASN1EncodableVector	v = new ASN1EncodableVector();
-        
-        if (version.getValue().intValue() != 0)
-        {
-            v.add(version);
-        }
-        
-        v.add(created);
-        v.add(baseData);
-        
-        if (extraData != null)
-        {
-            v.add(new DERTaggedObject(false, 0, extraData));
-        }
-        
-        if (commentData != null)
-        {
-            v.add(new DERTaggedObject(false, 1, commentData));
-        }
-        
-        return new DERSequence(v);
-    }
+//    public DERObject toASN1Object()
+//    {
+//        ASN1EncodableVector	v = new ASN1EncodableVector();
+//        
+//        if (version.getValue().intValue() != 0)
+//        {
+//            v.add(version);
+//        }
+//        
+//        v.add(created);
+//        v.add(baseData);
+//        
+//        if (extraData != null)
+//        {
+//            v.add(new DERTaggedObject(false, 0, extraData));
+//        }
+//        
+//        if (commentData != null)
+//        {
+//            v.add(new DERTaggedObject(false, 1, commentData));
+//        }
+//        
+//        return new DERSequence(v);
+//    }
 }

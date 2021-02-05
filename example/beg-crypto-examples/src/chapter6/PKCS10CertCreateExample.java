@@ -21,7 +21,7 @@ import org.bouncycastle.jce.PKCS10CertificationRequest;
 import org.bouncycastle.openssl.PEMWriter;
 import org.bouncycastle.x509.X509V3CertificateGenerator;
 import org.bouncycastle.x509.extension.AuthorityKeyIdentifierStructure;
-import org.bouncycastle.x509.extension.SubjectKeyIdentifierStructure;
+//import org.bouncycastle.x509.extension.SubjectKeyIdentifierStructure;
 
 /**
  * An example of a basic CA.
@@ -60,7 +60,7 @@ public class PKCS10CertCreateExample
         
         certGen.addExtension(X509Extensions.AuthorityKeyIdentifier, false, new AuthorityKeyIdentifierStructure(rootCert));
         
-        certGen.addExtension(X509Extensions.SubjectKeyIdentifier, false, new SubjectKeyIdentifierStructure(request.getPublicKey("BC")));
+//        certGen.addExtension(X509Extensions.SubjectKeyIdentifier, false, new SubjectKeyIdentifierStructure(request.getPublicKey("BC")));
         
         certGen.addExtension(X509Extensions.BasicConstraints, true, new BasicConstraints(false));
         

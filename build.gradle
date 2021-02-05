@@ -39,9 +39,15 @@ ext {
 	set('springBootAdminVersion', "2.2.1")
 }
 
-//sourceSets {
-//	main()
-//}
+// Include bouncycastle examples 
+sourceSets {
+	main {
+		java {
+			srcDirs = ['src/main/java',
+					   'example/beg-crypto-examples/src']
+		}
+	}
+}
 
 processResources {
 	from ('/src/main/resources') {
@@ -74,8 +80,6 @@ dependencies {
 	implementation 'org.springframework.data:spring-data-rest-hal-browser'
 	implementation 'org.springframework.session:spring-session-core'
 
-	implementation 'org.bouncycastle:bcprov-jdk15on:1.63'
-	
 	implementation 'io.hawt:hawtio-springboot:2.6.0'
 	if (project.getProperty('activeProfile').contains('dev')) {
 		// need runtime Servlet classes for bootrun
@@ -100,6 +104,13 @@ dependencies {
 	testImplementation 'com.unboundid:unboundid-ldapsdk'
 	testImplementation 'org.springframework.integration:spring-integration-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+
+	compile 'org.bouncycastle:bcprov-jdk15on:1.68'
+	compile 'org.bouncycastle:bcpkix-jdk15on:1.68'
+	compile 'org.bouncycastle:bcprov-ext-jdk15on:1.68'
+	compile 'org.bouncycastle:bcmail-jdk15on:1.68'
+	compile 'org.bouncycastle:bcpg-jdk15on:1.68'
+	compile 'org.bouncycastle:bctls-jdk15on:1.68'
 
 }
 
