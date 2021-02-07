@@ -174,7 +174,18 @@
 
             virtual_public_ip      (ocf::heartbeat:IPaddr2):       Started kev-A
             mail_to        (ocf::heartbeat:MailTo):        Started kev-A
-
+- Setup gradle build for wildfly 
+    - script plugin : https://docs.gradle.org/current/userguide/plugins.html
+    - https://www.cyberciti.biz/faq/linux-list-all-members-of-a-group/
+    - create user: https://linuxize.com/post/how-to-create-users-in-linux-using-the-useradd-command/
+    - zsh : 
+        - https://github.com/ohmyzsh/ohmyzsh
+    - deploy pg to wildfly :
+        - http://www.mastertheboss.com/jboss-server/jboss-deploy/how-to-deploy-applications-on-wildfly
+        - https://kodejava.org/how-do-i-pass-password-to-sudo-commands/
+        - https://unix.stackexchange.com/questions/225401/how-to-see-full-log-from-systemctl-status-service
+            - > journalctl -ru wildfly
+        - 
 
 # BlockChain 
 - https://ethereum.org/en/

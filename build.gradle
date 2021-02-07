@@ -1,18 +1,21 @@
 plugins {
-	id 'org.springframework.boot' version '2.1.9.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'org.springframework.boot'
+	id 'io.spring.dependency-management'
 //	id 'org.springframework.boot' version '2.2.6.RELEASE'
 //	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
 	id 'war'
 	id 'idea'
-	id 'io.github.divinespear.jpa-schema-generate' version '0.3.5.1'
+	id 'io.github.divinespear.jpa-schema-generate'
+//	id 'org.hidetake.ssh' apply false
+	id 'org.hidetake.ssh'
 }
 
 apply plugin: 'project-report'
+apply from: './gradle/ssh.gradle'
 
 group = 'com.lt'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 // use java 8 to compile since wildfly 14 only support it
 sourceCompatibility = JavaVersion.VERSION_1_8
 //sourceCompatibility = 11
@@ -43,8 +46,8 @@ ext {
 sourceSets {
 	main {
 		java {
-			srcDirs = ['src/main/java',
-					   'example/beg-crypto-examples/src']
+			srcDirs = ['src/main/java',]
+//					   'example/beg-crypto-examples/src']
 		}
 	}
 }
@@ -87,11 +90,12 @@ dependencies {
 		implementation 'org.springframework.boot:spring-boot-starter-jta-atomikos'
 		implementation 'org.springframework.boot:spring-boot-starter-activemq'
 //		implementation 'org.apache.activemq:activemq-pool'
-
 	}
 	if (project.getProperty('activeProfile').contains('uat')) {
 		// no need runtime for war
 		compileOnly 'org.springframework.boot:spring-boot-starter-undertow'
+		compile 'org.springframework.boot:spring-boot-starter-jta-atomikos'
+		compile 'org.springframework.boot:spring-boot-starter-activemq'
 	}
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'

@@ -160,12 +160,12 @@
                         <password>sa</password>
                     </security>
                 </datasource>
-                <xa-datasource jndi-name="java:jboss/datasources/mysqlXADS" pool-name="MysqlXADS" enabled="true" use-java-context="true">
+                <xa-datasource jndi-name="java:jboss/datasources/pgXADS" pool-name="pgXADS" enabled="true" use-java-context="true">
                     <xa-datasource-property name="ServerName">
                         kev-db
                     </xa-datasource-property>
                     <xa-datasource-property name="DatabaseName">
-                        greeter-quickstart
+                        pgdb
                     </xa-datasource-property>
                     <driver>mysql</driver>
                     <security>
@@ -174,9 +174,31 @@
                     </security>
                     <validation>
                         <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker"/>
+                        <validate-on-match>true</validate-on-match>
+                        <background-validation>false</background-validation>
                         <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLExceptionSorter"/>
                     </validation>
                 </xa-datasource>
+			   <xa-datasource jndi-name="java:jboss/jdbc/TSWDataSource" pool-name="TSWDataSource" enabled="true" use-java-context="true">
+                    <xa-datasource-property name="ServerName">
+                        kev-db
+                    </xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">
+                        tswdb
+                    </xa-datasource-property>
+                    <driver>mysql</driver>
+                    <security>
+                        <user-name>jboss-user</user-name>
+                        <password>kevin113</password>
+                    </security>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker"/>
+                        <validate-on-match>true</validate-on-match>
+                        <background-validation>false</background-validation>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLExceptionSorter"/>
+                    </validation>
+                </xa-datasource>	
+
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
                         <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
@@ -647,15 +669,4 @@
             <remote-destination host="localhost" port="25"/>
         </outbound-socket-binding>
     </socket-binding-group>
-    <deployments>
-        <deployment name="jboss-as-helloworld.war" runtime-name="jboss-as-helloworld.war">
-            <content sha1="0838a8293c85177951a346326fb2367a0b856e10"/>
-        </deployment>
-        <deployment name="cluster-demo.war" runtime-name="cluster-demo.war">
-            <content sha1="374eef3d9f820b8850ab9db7c7b71a4f58b1f66a"/>
-        </deployment>
-        <deployment name="greeter.war" runtime-name="greeter.war">
-            <content sha1="6a0aa765a3c39e7ab89e83b6106a9dd97575f191"/>
-        </deployment>
-    </deployments>
 </server>

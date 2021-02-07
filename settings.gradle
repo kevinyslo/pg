@@ -1,1 +1,14 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    plugins {
+        id 'org.springframework.boot' version '2.1.9.RELEASE'
+        id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+        id 'io.github.divinespear.jpa-schema-generate' version '0.3.5.1'
+        id "org.hidetake.ssh" version '2.10.1'
+    }
+}
 rootProject.name = 'pg'

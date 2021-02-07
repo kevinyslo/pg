@@ -1,0 +1,26 @@
+remotes {
+    app1 {
+        host = '192.168.0.109'
+        port = 122
+        user = 'pgadmin'
+        password = '1qaz2wsx'
+    }
+}
+
+task deploy {
+    doLast {
+        ssh.run {
+            session(remotes.app1) {
+                settings {
+                    pty = true
+                }
+                execute 'echo 1qaz2wsx | sudo -S systemctl stop wildfly'
+                put from: file('./ha-mysql-cluster/server1/wildfly/standalone-full-ha.xml'),
+                        into: '/opt/wildfly-14.0.1.Final/standalone/configuration', fileTransfer: 'scp'
+                put from: file('./build/libs/pg-0.0.1.war'),
+                        into: '/opt/wildfly-14.0.1.Final/standalone/deployments', fileTransfer: 'scp'
+                execute 'echo 1qaz2wsx | sudo -S systemctl start wildfly'
+            }
+        }
+    }
+}
