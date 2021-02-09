@@ -135,6 +135,9 @@
             - Use jdk 1.8 (avoid Could not initialize class com.android.sdklib.repository.AndroidSdkHandler)
             - Accept android license : https://stackoverflow.com/questions/38096225/automatically-accept-all-sdk-licences
             - To match gradle version and android plugin : https://developer.android.com/studio/releases/gradle-plugin
+    
+    - Tar server1 wildfly and cp to server3 as client
+    -  
 - Systemctl 
     - https://www.tecmint.com/list-all-running-services-under-systemd-in-linux/
 - Netty 

@@ -508,6 +508,7 @@
                 <http-connector name="http-connector-throughput" socket-binding="http" endpoint="http-acceptor-throughput">
                     <param name="batch-delay" value="50"/>
                 </http-connector>
+                <remote-connector name="remote-artemis" socket-binding="remote-artemis"/>
                 <in-vm-connector name="in-vm" server-id="0">
                     <param name="buffer-pooling" value="false"/>
                 </in-vm-connector>
@@ -516,7 +517,6 @@
                     <param name="batch-delay" value="50"/>
                     <param name="direct-deliver" value="false"/>
                 </http-acceptor>
-                <remote-acceptor name="netty" socket-binding="messaging"/>
                 <in-vm-acceptor name="in-vm" server-id="0">
                     <param name="buffer-pooling" value="false"/>
                 </in-vm-acceptor>
@@ -529,6 +529,7 @@
                 <connection-factory name="InVmConnectionFactory" entries="java:/ConnectionFactory" connectors="in-vm"/>
                 <connection-factory name="RemoteConnectionFactory" entries="java:jboss/exported/jms/RemoteConnectionFactory" connectors="http-connector" ha="true" block-on-acknowledge="true" reconnect-attempts="-1"/>
                 <pooled-connection-factory name="activemq-ra" entries="java:/JmsXA java:jboss/DefaultJMSConnectionFactory" connectors="in-vm" transaction="xa"/>
+                <pooled-connection-factory name="remote-artemis" entries="java:/jms/remoteCF java:jboss/exported/jms/remoteCF" connectors="remote-artemis" user="user123" password="Password123"/>
             </server>
         </subsystem>
         <subsystem xmlns="urn:wildfly:microprofile-config-smallrye:1.0"/>
@@ -639,13 +640,13 @@
     </profile>
     <interfaces>
         <interface name="management">
-            <inet-address value="${jboss.bind.address.management:10.10.10.12}"/>
+            <inet-address value="${jboss.bind.address.management:10.10.10.14}"/>
         </interface>
         <interface name="public">
-            <inet-address value="${jboss.bind.address.management:10.10.10.12}"/>
+            <inet-address value="${jboss.bind.address.management:10.10.10.14}"/>
         </interface>
         <interface name="private">
-            <inet-address value="${jboss.bind.address.management:10.10.10.12}"/>
+            <inet-address value="${jboss.bind.address.management:10.10.10.14}"/>
         </interface>
         <interface name="unsecure">
             <inet-address value="${jboss.bind.address.unsecure:127.0.0.1}"/>
@@ -665,9 +666,11 @@
         <socket-binding name="modcluster" multicast-address="${jboss.modcluster.multicast.address:224.0.1.105}" multicast-port="23364"/>
         <socket-binding name="iiop" interface="unsecure" port="3528"/>
         <socket-binding name="iiop-ssl" interface="unsecure" port="3529"/>
-        <socket-binding name="messaging" port="5445"/>
         <outbound-socket-binding name="mail-smtp">
             <remote-destination host="localhost" port="25"/>
+        </outbound-socket-binding>
+        <outbound-socket-binding name="remote-artemis">
+            <remote-destination host="kev-A" port="5445"/>
         </outbound-socket-binding>
     </socket-binding-group>
 </server>
