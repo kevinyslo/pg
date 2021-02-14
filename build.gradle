@@ -53,13 +53,21 @@ sourceSets {
 }
 
 processResources {
+	// processResources configuration
+	println 'processResources config start'
+	def gradleTaskName = gradle.startParameter.taskNames[0]
+	if (gradleTaskName.contains("deployApp")) {
+		def activeProfile = project.getTasksByName(gradleTaskName, false)[0].activeProfile
+		println activeProfile
+		project.activeProfile = activeProfile
+	}
 	from ('/src/main/resources') {
 		include 'application.properties'
 		filter(org.apache.tools.ant.filters.ReplaceTokens, tokens: [
 				activeProfile: project.activeProfile])
 	}
 	exclude 'jboss-deployment-structure.xml'
-
+ 	println 'processResources config end'
 }
 
 dependencies {
@@ -130,6 +138,7 @@ test {
 
 war {
 	enabled=true
+	archiveFileName = 'pg.war'
 	metaInf {
 		from 'src/main/resources/jboss-deployment-structure.xml'
 	}

@@ -14,6 +14,12 @@ remotes {
 }
 
 task deployApp1 {
+    // DeployApp1 configuration start
+    println 'deployApp1'
+    delegate.ext.setProperty('activeProfile', 'uat-gw')
+    dependsOn ('clean', 'war')
+    // DeployApp1 configuration end
+    // DeployApp1 execution
     doLast {
         ssh.run {
             session(remotes.app1) {
@@ -23,7 +29,7 @@ task deployApp1 {
                 execute 'echo 1qaz2wsx | sudo -S systemctl stop wildfly'
                 put from: file('./ha-mysql-cluster/server1/wildfly/standalone-full-ha.xml'),
                         into: '/opt/wildfly-14.0.1.Final/standalone/configuration', fileTransfer: 'scp'
-                put from: file('./build/libs/pg-0.0.1.war'),
+                put from: file('./build/libs/pg.war'),
                         into: '/opt/wildfly-14.0.1.Final/standalone/deployments', fileTransfer: 'scp'
                 execute 'echo 1qaz2wsx | sudo -S systemctl start wildfly'
             }
@@ -32,6 +38,8 @@ task deployApp1 {
 }
 
 task deployApp3 {
+    delegate.ext.setProperty('activeProfile', 'uat-app')
+    dependsOn ('clean', 'war')
     doLast {
         ssh.run {
             session(remotes.app3) {
@@ -41,7 +49,7 @@ task deployApp3 {
                 execute 'echo 1qaz2wsx | sudo -S systemctl stop wildfly'
                 put from: file('./ha-mysql-cluster/server3/wildfly/standalone-full-ha.xml'),
                         into: '/opt/wildfly-14.0.1.Final/standalone/configuration', fileTransfer: 'scp'
-                put from: file('./build/libs/pg-0.0.1.war'),
+                put from: file('./build/libs/pg.war'),
                         into: '/opt/wildfly-14.0.1.Final/standalone/deployments', fileTransfer: 'scp'
                 execute 'echo 1qaz2wsx | sudo -S systemctl start wildfly'
             }

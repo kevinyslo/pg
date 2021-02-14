@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 
-@Profile("dev-gw")
+@Profile({"dev-gw", "uat-gw"})
 @Service
 @AllArgsConstructor
 @Slf4j
@@ -28,6 +28,7 @@ public class GatewayUserService {
         // We can retry to send DQL in ActiveMQ console (Hawio) and this listener will process message again to
         // sync will app db
         boolean isAdmin1Error = true;
+        user.setId(null);
         userRepository.save(user);
         if (user.getUsername().equals("admin1") && isAdmin1Error) {
             throw new RuntimeException("admin1 should throw exception");

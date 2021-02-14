@@ -50,7 +50,7 @@ public class JmsConfig {
         return broker;
     }
 
-    @Profile({"dev-gw", "uat"})
+    @Profile({"dev-gw", "uat-gw"})
     @Bean
     // If customize DefaultJmsListenerContainerFactory, e.g. concurrency, we should inject DefaultJmsListenerContainerFactoryConfigurer
     // bean for allowing Atomkios transaction management

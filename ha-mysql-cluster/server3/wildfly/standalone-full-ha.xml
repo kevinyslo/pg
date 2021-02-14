@@ -162,29 +162,10 @@
                 </datasource>
                 <xa-datasource jndi-name="java:jboss/datasources/pgXADS" pool-name="pgXADS" enabled="true" use-java-context="true">
                     <xa-datasource-property name="ServerName">
-                        kev-db
+                        app-db
                     </xa-datasource-property>
                     <xa-datasource-property name="DatabaseName">
                         pgdb
-                    </xa-datasource-property>
-                    <driver>mysql</driver>
-                    <security>
-                        <user-name>jboss-user</user-name>
-                        <password>kevin113</password>
-                    </security>
-                    <validation>
-                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker"/>
-                        <validate-on-match>true</validate-on-match>
-                        <background-validation>false</background-validation>
-                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLExceptionSorter"/>
-                    </validation>
-                </xa-datasource>
-                <xa-datasource jndi-name="java:jboss/jdbc/TSWDataSource" pool-name="TSWDataSource" enabled="true" use-java-context="true">
-                    <xa-datasource-property name="ServerName">
-                        kev-db
-                    </xa-datasource-property>
-                    <xa-datasource-property name="DatabaseName">
-                        tswdb
                     </xa-datasource-property>
                     <driver>mysql</driver>
                     <security>
