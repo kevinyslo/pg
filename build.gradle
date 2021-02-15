@@ -137,11 +137,17 @@ test {
 }
 
 war {
-	enabled=true
+	from './pg-app/build'
+ 	enabled=true
 	archiveFileName = 'pg.war'
 	metaInf {
 		from 'src/main/resources/jboss-deployment-structure.xml'
 	}
+}
+
+task npmBuild(type: Exec) {
+	workingDir = './pg-app'
+	commandLine 'cmd', '/c', 'npm run build'
 }
 
 bootRun {
