@@ -1,37 +1,37 @@
-import React, { useEffect, useState } from "react";
-import { useStateValue } from "./State";
-import axios from "axios";
-import { Link, useHistory, useParams } from "react-router-dom";
-import LoadingOverlay from "react-loading-overlay";
+import React, { useEffect, useState } from 'react';
+import { useStateValue } from './State';
+import axios from 'axios';
+import { Link, useHistory, useParams } from 'react-router-dom';
+import LoadingOverlay from 'react-loading-overlay';
 import {
   BottomNavigation,
   BottomNavigationAction,
   Button,
   Grid,
-} from "@material-ui/core";
-import TextField from "@material-ui/core/TextField";
-import { Add, Refresh } from "@material-ui/icons";
-import { makeStyles } from "@material-ui/core/styles";
+} from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
+import { Add, Refresh } from '@material-ui/icons';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   layout: {
-    display: "flex",
-    flexDirection: "column",
-    minHeight: "calc(100vh - 56px)",
-    "@media (min-width:0px) and (orientation: landscape)": {
-      minHeight: "calc(100vh - 48px)",
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: 'calc(100vh - 56px)',
+    '@media (min-width:0px) and (orientation: landscape)': {
+      minHeight: 'calc(100vh - 48px)',
     },
-    "@media (min-width:600px)": { minHeight: "calc(100vh - 64px)" },
+    '@media (min-width:600px)': { minHeight: 'calc(100vh - 64px)' },
   },
   content: {
-    flex: "1 0 auto",
+    flex: '1 0 auto',
   },
   footer: {
     flexShrink: 0,
   },
   bottomNav: {
-    width: "100%",
-    position: "fixed",
+    width: '100%',
+    position: 'fixed',
     bottom: 0,
   },
 }));
@@ -40,33 +40,33 @@ export const UserPage = (props) => {
   // const history = useHistory();
   const { userId } = useParams();
   const [state, dispatch] = useStateValue();
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState('');
 
   const classes = useStyles();
 
   async function fetchUser() {
-    setStatus("loading");
-    const result = await axios.get(`/api/data/users/${userId}`);
-    setStatus("loaded");
+    setStatus('loading');
+    const result = await axios.get(`/pg/api/data/users/${userId}`);
+    setStatus('loaded');
     dispatch({
-      type: "fetch",
+      type: 'fetch',
       item: { username: result.data.username, password: result.data.password },
     });
   }
 
   async function createUser() {
     try {
-      setStatus("loading");
-      await axios.post("/api/app/user", state.item);
-      setStatus("loaded");
+      setStatus('loading');
+      await axios.post('/pg/api/app/user', state.item);
+      setStatus('loaded');
       dispatch({
-        type: "create",
+        type: 'create',
         msg: `Create user ${state.item.username} successfully !`,
       });
     } catch (e) {
-      setStatus("error");
+      setStatus('error');
       dispatch({
-        type: "create",
+        type: 'create',
         msg: `Create user ${state.item.username} fail !`,
       });
     }
@@ -76,14 +76,14 @@ export const UserPage = (props) => {
     fetchUser();
     return () => {
       dispatch({
-        type: "init",
+        type: 'init',
       });
     };
   }, []);
 
   function onChange(e) {
     dispatch({
-      type: "set",
+      type: 'set',
       fieldName: e.target.name,
       fieldValue: e.target.value,
     });
@@ -95,16 +95,16 @@ export const UserPage = (props) => {
   }
 
   return (
-    <LoadingOverlay active={status === "loading" ? true : false} spinner>
+    <LoadingOverlay active={status === 'loading' ? true : false} spinner>
       <div className={classes.layout}>
         <Grid
           className={classes.content}
           container
           spacing={3}
-          alignContent={"flex-start"}
+          alignContent={'flex-start'}
         >
           <Grid item xs={12}>
-            <label style={{ color: "red" }}>{state.msg}</label>
+            <label style={{ color: 'red' }}>{state.msg}</label>
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -119,7 +119,7 @@ export const UserPage = (props) => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              label={"Password"}
+              label={'Password'}
               name="password"
               fullWidth
               value={state.item.password}
@@ -145,7 +145,7 @@ export const UserPage = (props) => {
           onChange={() => fetchUser()}
           // className={classes.bottomNav}
         >
-          <BottomNavigationAction label={"Refresh"} icon={<Refresh />} />
+          <BottomNavigationAction label={'Refresh'} icon={<Refresh />} />
         </BottomNavigation>
       </div>
     </LoadingOverlay>

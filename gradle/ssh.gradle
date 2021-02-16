@@ -17,7 +17,7 @@ task deployApp1 {
     // DeployApp1 configuration start
     println 'deployApp1'
     delegate.ext.setProperty('activeProfile', 'uat-gw')
-    dependsOn ('clean', 'war')
+    dependsOn ('clean', 'npmBuild',  'war')
     // DeployApp1 configuration end
     // DeployApp1 execution
     doLast {
@@ -39,7 +39,7 @@ task deployApp1 {
 
 task deployApp3 {
     delegate.ext.setProperty('activeProfile', 'uat-app')
-    dependsOn ('clean', 'war')
+    dependsOn ('clean', 'npmBuild', 'war')
     doLast {
         ssh.run {
             session(remotes.app3) {

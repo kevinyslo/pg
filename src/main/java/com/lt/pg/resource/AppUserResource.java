@@ -10,7 +10,7 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/app/user")
+@RequestMapping("/api/app/user")
 @RequiredArgsConstructor
 public class AppUserResource {
 
