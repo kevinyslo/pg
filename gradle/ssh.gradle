@@ -17,7 +17,7 @@ task deployApp1 {
     // DeployApp1 configuration start
     println 'deployApp1'
     delegate.ext.setProperty('activeProfile', 'uat-gw')
-    dependsOn ('clean', 'npmBuild',  'war')
+    dependsOn ('clean', 'npmBuild', 'war')
     // DeployApp1 configuration end
     // DeployApp1 execution
     doLast {
