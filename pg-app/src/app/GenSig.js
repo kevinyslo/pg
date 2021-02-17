@@ -28,7 +28,9 @@ console.log('---------Found key:', privateKey)
 var md = forge.md.sha256.create();
 const data = 'sign this 我都剛剛同公公傾完電話📞祝大家晚安⭐️🌙'
 md.update(data, 'utf8');
+console.log('xxxxxxxxxxxxxxxxxxxxxxxxxx> ', md.digest().toHex())
 fs.writeFileSync('./pg-app/src/app/keystore/ORG_TRIAL_ONE/data', data);
+
 var signature = privateKey.sign(md);
 console.log('--------signature:', signature)
 
