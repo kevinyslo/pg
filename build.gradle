@@ -143,6 +143,9 @@ war {
 	metaInf {
 		from 'src/main/resources/jboss-deployment-structure.xml'
 	}
+	webInf {
+		from 'src/main/resources/web.xml', 'src/main/resources/jboss-web.xml'
+	}
 }
 
 task npmBuild(type: Exec) {

@@ -46,7 +46,7 @@ export const UserPage = (props) => {
 
   async function fetchUser() {
     setStatus('loading');
-    const result = await axios.get(`/pg/api/data/users/${userId}`);
+    const result = await axios.get(`/pg/api/app/user/${userId}`);
     setStatus('loaded');
     dispatch({
       type: 'fetch',
