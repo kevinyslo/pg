@@ -25,7 +25,7 @@
         - https://docs.docker.com/get-started/06_bind_mounts/
         - Allow development with system images in local by docker 
             > pwd -> /home/swadmin/docker/demo/getting-started/app
-            > sudo docker run -dp 3000:3000 -w /app -v "$(pwd):/app" node:1 2-alpine sh -c "npm config set proxy http://proxy1.scig.gov.hk:8080 && npm config set https-proxy http://proxy1.scig.gov.hk:8 080 && npm install && npm run dev"
+            > sudo docker run -dp 3000:3000 -w /app -v "$(pwd):/app" node:1 2-alpine sh -c "npm config set proxy http://proxy1.scig.gov.hk:8080 && npm config set https-proxy http://proxy1.scig.gov.hk:8080 && npm install && npm run dev"
 - docker logs
     - > sudo docker logs <container id> -f 
 - The docker system prune command removes all stopped containers, dangling images, and unused networks:
@@ -33,4 +33,12 @@
 - Multi container apps 
     - https://docs.docker.com/get-started/07_multi_container/
     - each container should do one thing and do it well
-
+    - Lot of tools that are useful for troubleshooting or debugging networking issues for docker 
+        > sudo docker run -it --network todo-app nicolaka/netshoot
+    - dig - DNS lookup utility: > dig 
+    - http://linux.vbird.org/linux_server/0140networkcommand.php#traceroute (ifconfig, route)
+- Docker compose 
+    - > sudo -s (https://superuser.com/questions/241129/why-wont-sudo-cd-work)
+    - Logging 
+        - container log path: :/var/lib/docker/containers/<container id>/xxxx-json.log
+        - https://sematext.com/guides/docker-logs/
