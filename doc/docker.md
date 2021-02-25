@@ -42,3 +42,19 @@
     - Logging 
         - container log path: :/var/lib/docker/containers/<container id>/xxxx-json.log
         - https://sematext.com/guides/docker-logs/
+
+## Learn server setup 
+- http://linux.vbird.org/linux_server/0107cloudandvm.php
+- https://en.wikipedia.org/wiki/Default_gateway        
+
+
+## install tsw in docker 
+- Problem 1
+    - ERROR: Error processing tar file(exit status 1): write /mysql/data/tswdb@002dex/document_aud.ibd: no space left on device
+    - Ref    
+        - https://unix.stackexchange.com/questions/203168/docker-says-no-space-left-on-device-but-system-has-plenty-of-space
+        - https://swetava.wordpress.com/2019/11/24/why-docker-throws-a-no-space-left-on-device-error-even-though-system-has-enough-space/
+    - Solution 
+        - docker root /var/lib/docker has tmp is 15G. Delete the tmp file is ok 
+
+
