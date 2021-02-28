@@ -14,14 +14,43 @@ remotes {
     app3 {
         host = '192.168.0.109'
         port = 422
-        user = 'pgadmin'
-        password = '1qaz2wsx'
+        user = 'web'
+        password = 'web'
     }
 }
 
+
+task stopApp1 {
+    doLast {
+        println 'run stopApp1'
+        ssh.run {
+            session(remotes.app1) {
+                settings {
+                    pty = true
+                }
+                execute 'echo 1qaz2wsx | sudo -S systemctl stop wildfly'
+            }
+        }
+    }
+}
+
+task stopApp2 {
+    doLast {
+        ssh.run {
+            session(remotes.app2) {
+                settings {
+                    pty = true
+                }
+                execute 'echo 1qaz2wsx | sudo -S systemctl stop wildfly'
+            }
+        }
+    }
+}
+
+
 task deployApp1 {
     // DeployApp1 configuration start
-    println 'deployApp1'
+    println 'config deployApp1'
     delegate.ext.setProperty('activeProfile', 'uat-gw')
     dependsOn ('clean', 'npmBuild', 'war')
     // DeployApp1 configuration end
@@ -32,11 +61,12 @@ task deployApp1 {
                 settings {
                     pty = true
                 }
-                execute 'echo 1qaz2wsx | sudo -S systemctl stop wildfly'
                 put from: file('./ha-mysql-cluster/server1/wildfly/standalone-full-ha.xml'),
-                        into: '/opt/wildfly-14.0.1.Final/standalone/configuration', fileTransfer: 'scp'
+                        into: '/home/pgadmin/wildfly', fileTransfer: 'scp'
+                execute 'echo 1qaz2wsx | sudo -u web -S cp /home/pgadmin/wildfly/standalone-full-ha.xml /opt/wildfly-14.0.1.Final/standalone/configuration'
                 put from: file('./build/libs/pg.war'),
-                        into: '/opt/wildfly-14.0.1.Final/standalone/deployments', fileTransfer: 'scp'
+                        into: '/home/pgadmin/wildfly', fileTransfer: 'scp'
+                execute 'echo 1qaz2wsx | sudo -u web -S cp /home/pgadmin/wildfly/pg.war /opt/wildfly-14.0.1.Final/standalone/deployments'
                 execute 'echo 1qaz2wsx | sudo -S systemctl start wildfly'
             }
         }
@@ -44,7 +74,7 @@ task deployApp1 {
 }
 
 task deployApp2 {
-    println 'deployApp2'
+    println 'config deployApp2'
     delegate.ext.setProperty('activeProfile', 'uat-gw')
     dependsOn ('clean', 'npmBuild', 'war')
     doLast {
@@ -53,11 +83,12 @@ task deployApp2 {
                 settings {
                     pty = true
                 }
-                execute 'echo 1qaz2wsx | sudo -S systemctl stop wildfly'
                 put from: file('./ha-mysql-cluster/server2/wildfly/standalone-full-ha.xml'),
-                        into: '/opt/wildfly-14.0.1.Final/standalone/configuration', fileTransfer: 'scp'
+                        into: '/home/pgadmin/wildfly', fileTransfer: 'scp'
+                execute 'echo 1qaz2wsx | sudo -u web -S cp /home/pgadmin/wildfly/standalone-full-ha.xml /opt/wildfly-14.0.1.Final/standalone/configuration'
                 put from: file('./build/libs/pg.war'),
-                        into: '/opt/wildfly-14.0.1.Final/standalone/deployments', fileTransfer: 'scp'
+                        into: '/home/pgadmin/wildfly', fileTransfer: 'scp'
+                execute 'echo 1qaz2wsx | sudo -u web -S cp /home/pgadmin/wildfly/pg.war /opt/wildfly-14.0.1.Final/standalone/deployments'
                 execute 'echo 1qaz2wsx | sudo -S systemctl start wildfly'
             }
         }

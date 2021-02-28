@@ -55,11 +55,13 @@ sourceSets {
 processResources {
 	// processResources configuration
 	println 'processResources config start'
-	def gradleTaskName = gradle.startParameter.taskNames[0]
-	if (gradleTaskName.contains("deployApp")) {
-		def activeProfile = project.getTasksByName(gradleTaskName, false)[0].activeProfile
-		println activeProfile
-		project.activeProfile = activeProfile
+	for (gradleTaskName in gradle.startParameter.taskNames) {
+		if (gradleTaskName.contains("deployApp")) {
+			def activeProfile = project.getTasksByName(gradleTaskName, false)[0].activeProfile
+			println activeProfile
+			project.activeProfile = activeProfile
+			break
+		}
 	}
 	from ('/src/main/resources') {
 		include 'application.properties'

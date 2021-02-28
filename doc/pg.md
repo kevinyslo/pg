@@ -188,7 +188,12 @@
         - https://kodejava.org/how-do-i-pass-password-to-sudo-commands/
         - https://unix.stackexchange.com/questions/225401/how-to-see-full-log-from-systemctl-status-service
             - > journalctl -ru wildfly
-        - 
+- Clustering for jms 
+    - https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/html-single/configuration_guide/index#jgroups_troubleshooting
+    - https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/html/configuring_messaging/messaging-ha#ha_policies
+    - http://www.mastertheboss.com/jboss-server/jboss-jms/jms-clustering-in-wildfly-and-jboss-eap
+    - http://www.mastertheboss.com/jboss-server/jboss-eap/what-is-the-difference-between-jboss-eap-wildfly-and-jboss-as
+    - show installed pkg : > dpkg -l 
 
 # BlockChain 
 - https://ethereum.org/en/
