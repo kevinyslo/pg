@@ -36,6 +36,7 @@ task stopApp1 {
 
 task stopApp2 {
     doLast {
+        println 'run stopApp2'
         ssh.run {
             session(remotes.app2) {
                 settings {
