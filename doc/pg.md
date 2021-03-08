@@ -197,13 +197,17 @@
     - https://techdocs.broadcom.com/us/en/symantec-security-software/identity-security/identity-manager/14-3/installing/install-on-jboss-or-wildfly/jboss-or-wildfly-cluster-installation/install-on-the-cluster.html
     - nfs 
         - https://www.tecmint.com/install-nfs-server-on-ubuntu/
-    - Cluster by master-slave replicaton 
+        - https://linuxize.com/post/how-to-mount-an-nfs-share-in-linux/ (client mount as reboot)
+    - Cluster by master-slave replicaton (server 1 and server 4)
         - The problem is jboss console cannot view the mq message of slave in backup (inactive) mode (i.e. master is on live) and then we don't know whether message backup in slave as master is on live
-        - As master down, we can view slave messages. But as master on again, slave become backup mode , we cannot view again  
+        - As master down, we can view slave messages. But as master on again, slave become backup mode , we cannot view again. But as master kill -9, slave still doesn't know   
+        - The slave not allow using DefaultJMSConnectionFactory, so cannot deploy pg.war
         - Also , as two masters and one slave, the slave cannot backup even shutdown 2 masters 
     - Cluster by master-slave shared stored 
         - https://developer.jboss.org/thread/276360
-    
+        - The problem is jboss console cannot view the mq message of slave in backup (inactive) mode (i.e. master is on live) and then we don't know whether message backup in slave as master is on live
+       
+
 # BlockChain 
 - https://ethereum.org/en/
 - https://github.com/ethereum

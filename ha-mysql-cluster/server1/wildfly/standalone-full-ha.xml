@@ -479,7 +479,11 @@
         <subsystem xmlns="urn:jboss:domain:messaging-activemq:4.0">
             <server name="default">
                 <cluster user="NewClusterUser" password="secretpassword"/>
-                <replication-master cluster-name="my-cluster" group-name="group1" check-for-live-server="true"/>
+		<shared-store-master/>
+		<paging-directory path="/mnt/nfs_shared_data/node1jr/paging"/>
+		<bindings-directory path="/mnt/nfs_shared_data/node1jr/bindings"/>
+		<journal-directory path="/mnt/nfs_shared_data/node1jr/journal"/>
+		<large-messages-directory path="/mnt/nfs_shared_data/node1jr/large-messages"/>
                 <security-setting name="#">
                     <role name="guest" send="true" consume="true" create-non-durable-queue="true" delete-non-durable-queue="true"/>
                 </security-setting>

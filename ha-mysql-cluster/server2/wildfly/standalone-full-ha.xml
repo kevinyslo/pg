@@ -479,7 +479,11 @@
         <subsystem xmlns="urn:jboss:domain:messaging-activemq:4.0">
             <server name="default">
                 <cluster user="NewClusterUser" password="secretpassword"/>
-                <replication-slave cluster-name="my-cluster" group-name="group1"/>
+                <shared-store-slave failover-on-server-shutdown="true"/>
+                <bindings-directory path="/mnt/nfs_shared_data/node2jr/bindings"/>
+                <journal-directory path="/mnt/nfs_shared_data/node2jr/journal"/>
+                <large-messages-directory path="/mnt/nfs_shared_data/node2jr/large-messages"/>
+                <paging-directory path="/mnt/nfs_shared_data/node2jr/paging"/>
                 <security-setting name="#">
                     <role name="guest" send="true" consume="true" create-non-durable-queue="true" delete-non-durable-queue="true"/>
                 </security-setting>

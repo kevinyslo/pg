@@ -1,0 +1,4 @@
+UUID=8ab443c1-14ed-460c-a1bf-c82558c270dc / ext4 defaults 0 0
+/swap.img	none	swap	sw	0	0
+10.10.10.15:/mnt/nfs_data /mnt/nfs_shared_data  nfs      defaults    0       0
+
